@@ -3,7 +3,6 @@ const { auth } = require("../middleware/auth.middleware");
 const { ActivityModel } = require("../model/activity.model");
 
 const activityRouter = express.Router();
-activityRouter.use(auth);
 
 activityRouter.post("/add", async (req, res) => {
   try {
