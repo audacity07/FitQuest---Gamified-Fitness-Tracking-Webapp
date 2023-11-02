@@ -8,3 +8,42 @@
 .rotatedText{
     transform-origin: 0 100px;
 }
+.circleText{
+    animation:rotateText 25s linear infinite;
+}
+@keyframes rotateText {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform:rotate(360deg)
+        }
+}
+
+.horizontalScrollText{
+    display: inline-block;  
+    -webkit-text-stroke: 1.5px #333;
+    animation: scrollByX 25s linear infinite;
+}
+@keyframes scrollByX {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+
+.mobileLavlink::before {
+    content: attr(dataText);
+    position: absolute;
+    color: #000;
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.mobileLavlink:hover::before {
+    width:100%;
+}
