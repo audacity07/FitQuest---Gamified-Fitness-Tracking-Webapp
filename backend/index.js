@@ -8,7 +8,7 @@ const swaggerJSdoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 const { selectedActivityRouter } = require("./routes/selectedActivity.routes");
 const { activityRouter } = require("./routes/activity.routes");
-const { activityRouter } = require("./routes/activity.routes");
+// const { activityRouter } = require("./routes/activity.routes");
 
 const app = express();
 app.use(cors());
