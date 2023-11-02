@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/Authenticate/action";
-import styled from "styled-components";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +24,7 @@ export const Login = () => {
     });
   };
   return (
-    <DIV isAuth={isAuth.toString()} isError={isError.toString()}>
+    <div isAuth={isAuth.toString()} isError={isError.toString()}>
       <h2>{isAuth ? "LOGIN SUCCESS" : "Login to continue"}</h2>
       <input
         onChange={(e) => setEmail(e.target.value)}
@@ -42,28 +41,8 @@ export const Login = () => {
         value={password}
       />
       <button onClick={handleLogin}>Login</button>
-    </DIV>
+    </div>
   );
 };
 
-const DIV = styled.div`
-  width: 400px;
-  margin: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  input {
-    height: 40px;
-    font: larger;
-    border: ${({ isAuth }) =>
-      isAuth === "false" ? "1px solid red" : "1px solid green"};
-  }
-  h2 {
-    color: ${({ isAuth }) => (isAuth === "true" ? "green" : "red")};
-  }
-  button {
-    height: 35px;
-    border: none;
-    cursor: pointer;
-  }
-`;
+
