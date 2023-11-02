@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const blackListSchema = mongoose.Schema({
-  token: String,
+  token: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 });
 
 const BlackListModel = mongoose.model("blacklist", blackListSchema);
