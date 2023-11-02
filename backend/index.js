@@ -54,6 +54,11 @@ app.all("*", (req, res, next) => {
   });
 });
 
+// app.get("/", (req, res) => {
+//   res.status(200).json({ msg: `Working` });
+// });
+
+
 app.get("/regeneratetoken", (req, res) => {
   const refreshToken = req.headers.authorization?.split(" ")[1];
   const decoded = jwt.verify(refreshToken, "masai");

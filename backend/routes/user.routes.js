@@ -600,7 +600,6 @@ userRouter.delete("/delete/:id", async (req, res) => {
     res.status(400).json({ status: "fail", error: err.message });
   }
 });
-
 function testPassword(password) {
   let num = false;
   let uppercase = false;
