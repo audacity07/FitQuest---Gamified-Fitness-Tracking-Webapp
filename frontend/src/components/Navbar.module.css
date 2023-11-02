@@ -8,6 +8,10 @@
     transition: width 0.8s ease; 
 }
 
+.mobileLavlinkForHome::before{
+    color: #000;
+}
+
 .mobileLavlink:hover::before {
     width:100%;
 }
