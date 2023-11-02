@@ -23,7 +23,7 @@ const auth = async (req, res, next) => {
         return res.status(400).json({ msg: "Invalid Token" });
       } else if (decoded) {
         // console.log(decoded);
-        req.body.userID = decoded.userID;
+        req.user = decoded;
         next();
       }
     });
