@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    totalXP: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     versionKey: false,

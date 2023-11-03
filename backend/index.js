@@ -8,6 +8,9 @@ const swaggerJSdoc = require("swagger-jsdoc");
 const swaggerUI = require("swagger-ui-express");
 const { selectedActivityRouter } = require("./routes/selectedActivity.routes");
 const { activityRouter } = require("./routes/activity.routes");
+const { friendRouter } = require("./routes/friend.routes");
+const { notificationRouter } = require("./routes/notification.routes");
+const { challengeRouter } = require("./routes/challenge.routes");
 
 const app = express();
 app.use(cors());
@@ -33,7 +36,7 @@ const options = {
     security: [{ bearerAuth: [] }],
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://localhost:8080",
       },
     ],
   },
@@ -46,6 +49,9 @@ app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 app.use("/user", userRouter);
 app.use("/selectedactivity", selectedActivityRouter);
 app.use("/activity", activityRouter);
+app.use("/challenge", challengeRouter);
+app.use("/friend", friendRouter);
+app.use("/notification", notificationRouter);
 
 app.all("*", (req, res, next) => {
   res.status(404).json({
@@ -53,11 +59,6 @@ app.all("*", (req, res, next) => {
     message: `Can't find ${req.originalUrl} on this server!`,
   });
 });
-
-// app.get("/", (req, res) => {
-//   res.status(200).json({ msg: `Working` });
-// });
-
 
 app.get("/regeneratetoken", (req, res) => {
   const refreshToken = req.headers.authorization?.split(" ")[1];
