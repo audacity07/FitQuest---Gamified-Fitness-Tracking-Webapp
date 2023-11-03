@@ -19,7 +19,7 @@ activityRouter.get("/", async (req, res) => {
     let activity = await ActivityModel.find({
       name: req.body.name,
     });
-    res.status(200).json({ activity });
+    res.status(200).json({"msg":"activity data recieved", "activityData":activity });
   } catch (err) {
     console.log(err);
     res.status(400).json({ error: err });

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from "framer-motion";
 import styes from "./Navbar.module.css"
 
+
 const navLinks = [
     { title: "personal training", href: "/", dataText: "personal training" },
     { title: "duo training", href: "/", dataText: "duo training" },
