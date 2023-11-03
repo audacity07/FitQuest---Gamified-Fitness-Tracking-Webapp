@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
-import { MobileNavLink } from './MobileNavLink';
+import { MobileNavLink } from '../MobileNavLink';
 
 
 const navLinks = [
@@ -9,7 +9,7 @@ const navLinks = [
     { title: "fitlab for her", href: "/", dataText: "fitlab for her" },
     { title: "business", href: "/", dataText: "business" },
     { title: "yoga", href: "/", dataText: "yoga" },
-    { title: "fitlab at home", href: "/", dataText: "fitlab at home" },
+    { title: "fitlab at home", href: "/user-board", dataText: "fitlab at home" },
 ]
 export const Navbar = () => {
     const [open, setOpen] = useState(false);
@@ -23,17 +23,15 @@ export const Navbar = () => {
         animate: {
             x: 1,
             transition: {
-                duration: 0.5,
-                ease: [0.12, 0, 0.39, 0]
+                duration: 1
 
             }
         },
         exit: {
             x: "-250vh",
             transition: {
-                delay: 0.5,
-                duration: 0.5,
-                ease: [0.22, 1, 0.36, 1]
+                delay: 0.6,
+                duration: 1
 
             }
         }
@@ -46,14 +44,14 @@ export const Navbar = () => {
         },
         open: {
             transition: {
-                delayChildren: 0.3,
+                delayChildren: 0.6,
                 staggerChildren: 0.09
             }
         }
     }
     return (
         <header>
-            <nav className='flex justify-between items-center p-10'>
+            <nav className='flex justify-between items-center p-10 fixed top-0 left-0 w-full z-10'>
                 <div className='flex items-center gap-[5rem]'>
                     <div
                         className='cursor-pointer text-md text-white z-10'
@@ -78,7 +76,7 @@ export const Navbar = () => {
                         initial="initial"
                         animate="animate"
                         exit="exit"
-                        className='fixed z-20 left-0 top-0 w-full h-screen bg-[#183330] text-white p-10'>
+                        className='fixed z-20 left-0 top-0 w-[50%] h-screen bg-[#183330] text-white p-10'>
                         <div className='flex h-full flex-col'>
                             <div className='flex justify-between'>
                                 <p className='cursor-pointer text-base text-white' onClick={toggleMenu}>Close</p>
@@ -88,7 +86,7 @@ export const Navbar = () => {
                                 initial="initial"
                                 animate="open"
                                 exit="initial"
-                                className='flex flex-col h-full justify-center items-center gap-4'>
+                                className='flex flex-col h-full gap-5 mt-20'>
                                 {
                                     navLinks.map((link, index) => {
                                         return (

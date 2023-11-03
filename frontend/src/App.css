@@ -1,8 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap');
 *{
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 body{
-    background-color: #F8F8F8;
+    background-color: #f7f7f7;
+}
+
+body::-webkit-scrollbar {
+    width: 10px; 
+}
+
+
+body::-webkit-scrollbar-thumb {
+    background-color: #2f5b56; 
+    border-radius: 5px; 
+    border: 3px solid #fff;
+}
+
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #eac5ba; 
+}
+
+
+body::-webkit-scrollbar-thumb:active {
+    background-color: #ccaaa0; 
 }
