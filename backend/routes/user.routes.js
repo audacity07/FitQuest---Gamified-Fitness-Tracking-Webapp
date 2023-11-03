@@ -8,6 +8,15 @@ const userRouter = express.Router();
 
 /**
  * @swagger
+ * securityDefinitions:
+ *   bearerAuth:
+ *     type: apiKey
+ *     name: Authorization
+ *     in: header
+ */
+
+/**
+ * @swagger
  * /user:
  *   description: Operations related to User model
  *   tags:
@@ -432,7 +441,18 @@ userRouter.get("/", async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/UserUpdate'
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: The username for the new user (must be unique).
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: The email address for the new user (must be unique).
+ *               password:
+ *                 type: string
+ *                 description: The password for the new user.
  *     responses:
  *       200:
  *         description: User has been updated successfully.
@@ -503,7 +523,7 @@ userRouter.patch("/update/:id", async (req, res) => {
     }
 
     // Update the user
-    await userModel.findByIdAndUpdate(id, req.body);
+    await UserModel.findByIdAndUpdate(id, req.body);
     res.status(200).json({
       status: "success",
       message: "User has been updated",
@@ -590,7 +610,7 @@ userRouter.delete("/delete/:id", async (req, res) => {
     // }
 
     // Delete the selected user
-    await UserModel.findByIdAndDelete(id);
+    await UserModel.findByIdAndDelete({ _id: id });
     res.status(204).json({
       status: "success",
       message: "User has been deleted",
@@ -600,6 +620,7 @@ userRouter.delete("/delete/:id", async (req, res) => {
     res.status(400).json({ status: "fail", error: err.message });
   }
 });
+
 function testPassword(password) {
   let num = false;
   let uppercase = false;

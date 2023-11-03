@@ -250,7 +250,7 @@ activityRouter.delete("/delete/:id", async (req, res) => {
   try {
     await ActivityModel.findByIdAndDelete({ _id: id });
     res
-      .status(200)
+      .status(204)
       .json({ status: "success", message: "Activity has been deleted" });
   } catch (err) {
     console.log(err);

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-// const { UserModel } = require("./user.model");
-// const { ActivityModel } = require("./activity.model");
 
 const selectedActivitySchema = mongoose.Schema(
   {
