@@ -1,4 +1,4 @@
-import styes from "./Navbar.module.css";
+import styes from "./Navbar/Navbar.module.css";
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion";
 

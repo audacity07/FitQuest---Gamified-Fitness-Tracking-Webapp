@@ -1,12 +1,13 @@
 import React from 'react'
-import landingPoster from "../assets/landingPoster.jpeg";
-import gymExercisPoster1 from "../assets/asset-1.jpeg";
-import gymExercisPoster2 from "../assets/asset-2.jpeg";
-import landingVideo from "../assets/por-video.mp4"
+import landingPoster from "../../assets/landingPoster.jpeg";
+import gymExercisPoster1 from "../../assets/asset-1.jpeg";
+import gymExercisPoster2 from "../../assets/asset-2.jpeg";
+import landingVideo from "../../assets/por-video.mp4"
 import styles from "./Home.module.css";
 import Marquee from "react-fast-marquee";
-import bigPoster from "../assets/asset-4.jpeg";
+import bigPoster from "../../assets/asset-4.jpeg";
 import { Link } from 'react-router-dom';
+import { Navbar } from '../../components/Navbar/Navbar';
 
 const manuLinks = [
     { title: "personal training", href: "/", dataText: "personal training" },
@@ -27,6 +28,7 @@ export const Home = () => {
     }
     return (
         <div>
+            <Navbar/>
             <section>
                 <div>
                     <div className='relative -mt-[6.5rem] w-full'>
@@ -81,7 +83,7 @@ export const Home = () => {
                         welcome to <br />
                         fitlab:
                     </h1>
-                    <p className='self-end text-lg'>
+                    <p className='self-end text-xl font-light'>
                         Neem je je al tijden voor om nou écht eens<br />
                         iets aan sport te gaan doen? Dan is fitlab:<br />
                         dé studio om de beste start te maken. Met<br />
@@ -168,8 +170,63 @@ export const Home = () => {
                 <div className='bg-[#E9D1CA] w-[20%] h-full absolute top-0 right-0'></div>
             </section>
 
-            <section className='p-20 bg-[#]'>
+            <section className='py-20 bg-[#183330]'>
+                <div className={`relative flex justify-center items-center overflow-hidden`}>
+                    <Marquee speed={1} style={{ overflowY: 'hidden', paddingBlock: "20px" }}>
+                        <span className={` ${styles.horizontalScrollText} text-white text-8xl font-bold`}>first some information</span>
+                        <span className={`${styles.horizontalScrollText} ${styles.horizontalScrollText2} text-transparent text-8xl font-bold`}>first some information</span>
+                    </Marquee>
+                </div>
 
+                <div className='flex ml-40 gap-36 text-white mt-20'>
+                    <div>
+                        <h3 className='text-2xl font-semibold mb-5'>We would like more <br />information on:</h3>
+                        <div className='flex flex-col gap-6'>
+                            <label className='block cursor-pointer relative pl-[30px]'>
+                                <input type="radio" className={` ${styles.inputCircle} hidden`} />
+                                <span className={` ${styles.radioCircle} w-[20px] h-[20px] inline-block border-2 rounded-full absolute left-0 top-1 before:content-[""] before:absolute before:w-[10px] before:h-[10px] before:bg-[#E9D1CA] before:rounded-full before:ml-[0.21rem] before:mt-[0.2rem]`}></span>
+                                <span className='font-light text-lg ml-4'>Personal training</span>
+                            </label>
+                            <label className='block cursor-pointer relative pl-[30px]'>
+                                <input type="radio" className={` ${styles.inputCircle}  hidden`} />
+                                <span className={` ${styles.radioCircle} w-[20px] h-[20px] inline-block border-2 rounded-full absolute left-0 top-1
+                                before:content-[""] before:absolute before:w-[10px] before:h-[10px] before:bg-[#E9D1CA] before:rounded-full before:ml-[0.21rem] before:mt-[0.2rem]`}></span>
+                                <span className='font-light text-lg ml-4'>Duo training</span>
+                            </label>
+                            <label className='block cursor-pointer relative pl-[30px]'>
+                                <input type="radio" className={` ${styles.inputCircle}  hidden`} />
+                                <span className={` ${styles.radioCircle} w-[20px] h-[20px] inline-block border-2 rounded-full absolute left-0 top-1
+                                before:content-[""] before:absolute before:w-[10px] before:h-[10px] before:bg-[#E9D1CA] before:rounded-full before:ml-[0.21rem] before:mt-[0.2rem]`}></span>
+                                <span className='font-light text-lg ml-4'>Fitlab: for her</span>
+                            </label>
+                            <label className='block cursor-pointer relative pl-[30px]'>
+                                <input type="radio" className={` ${styles.inputCircle}  hidden`} />
+                                <span className={` ${styles.radioCircle} w-[20px] h-[20px] inline-block border-2 rounded-full absolute left-0 top-1
+                                before:content-[""] before:absolute before:w-[10px] before:h-[10px] before:bg-[#E9D1CA] before:rounded-full before:ml-[0.21rem] before:mt-[0.2rem]`}></span>
+                                <span className='font-light text-lg ml-4'>Fitlab: business</span>
+                            </label>
+                            <label className='block cursor-pointer relative pl-[30px]'>
+                                <input type="radio" className={` ${styles.inputCircle}  hidden`} />
+                                <span className={` ${styles.radioCircle} w-[20px] h-[20px] inline-block border-2 rounded-full absolute left-0 top-1
+                                before:content-[""] before:absolute before:w-[10px] before:h-[10px] before:bg-[#E9D1CA] before:rounded-full before:ml-[0.21rem] before:mt-[0.2rem]`}></span>
+                                <span className='font-light text-lg ml-4'>Yoga</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className='w-[40%]'>
+                        <h3 className='text-2xl font-semibold mb-5'>We can be reached through <br />this information:</h3>
+                        <form className='flex flex-col gap-5'>
+                            <input type="text" className='bg-transparent border-b placeholder:text-white/75 outline-none p-1 transition focus:border-[#E9D1CA]' placeholder='Name' />
+                            <input type="text" className='bg-transparent border-b placeholder:text-white/75 outline-none p-1 transition focus:border-[#E9D1CA]' placeholder='Mobile Number' />
+                            <input type="text" className='bg-transparent border-b placeholder:text-white/75 outline-none p-1 transition focus:border-[#E9D1CA]' placeholder='Email address' />
+                            <textarea className='bg-transparent border-b placeholder:text-white/75 outline-none p-1 transition focus:border-[#E9D1CA]' placeholder='Message' />
+                            <div>
+                                <span style={customStyle2} 
+                                dataText="send now" className={`${styles.sendNowBtn} relative text-5xl  py-1 line-clamp-1 text-transparent font-extrabold tracking-widest inline cursor-pointer`} >send now</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </section>
         </div>
     )
