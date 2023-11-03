@@ -22,8 +22,12 @@
 
 .horizontalScrollText{
     display: inline-block;  
-    -webkit-text-stroke: 1.5px #333;
+    -webkit-text-stroke: 1.5px #000;
     animation: scrollByX 25s linear infinite;
+}
+.horizontalScrollText2{
+    -webkit-text-stroke: 1.5px #E9D1CA;
+    margin-inline: 2rem;
 }
 @keyframes scrollByX {
     0%{
@@ -46,4 +50,36 @@
 
 .mobileLavlink:hover::before {
     width:100%;
+}
+
+.sendNowBtn::before {
+    content: attr(dataText);
+    position: absolute;
+    color: #fff;
+    width: 0px;
+    overflow: hidden;
+    white-space: nowrap; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.sendNowBtn:hover::before {
+    width:100%;
+}
+
+.inputCircle:checked + .radioCircle{
+    border-color: #E9D1CA;
+}
+.inputCircle:hover + .radioCircle + span{
+    color: #E9D1CA;
+}
+.inputCircle:checked + .radioCircle + span{
+    color: #E9D1CA;
+}
+
+.radioCircle::before {
+    transform: scale(0);
+    transition: transform .3s ease;
+}
+.inputCircle:checked + .radioCircle::before{
+    transform: scale(1);
 }
