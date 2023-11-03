@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { MobileNavLink } from '../MobileNavLink';
 
 
+
 const navLinks = [
     { title: "personal training", href: "/", dataText: "personal training" },
     { title: "duo training", href: "/", dataText: "duo training" },
