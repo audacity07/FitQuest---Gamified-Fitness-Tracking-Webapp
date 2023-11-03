@@ -13,31 +13,51 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// const options = {
-//   definition: {
-//     openapi: "3.0.0",
-//     info: {
-//       title: "",
-//       version: "1.0.0",
-//     },
-//     servers: [
-//       {
-//         url: "http://localhost:8080",
-//       },
-//     ],
-//   },
-//   apis: ["./routes/*.js"],
-// };
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "FitQuest API",
+      version: "1.0.0",
+      description: "Routes to handle users, activity and their progress",
+    },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [{ bearerAuth: [] }],
+    servers: [
+      {
+        url: "http://localhost:3000",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
 
-// const swaggerSpec = swaggerJSdoc(options);
-// app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
+const swaggerSpec = swaggerJSdoc(options);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
-app.use("/users", userRouter);
+app.use("/user", userRouter);
 app.use("/selectedactivity", selectedActivityRouter);
 app.use("/activity", activityRouter);
+
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Can't find ${req.originalUrl} on this server!`,
+  });
+});
+
 // app.get("/", (req, res) => {
 //   res.status(200).json({ msg: `Working` });
 // });
+
 
 app.get("/regeneratetoken", (req, res) => {
   const refreshToken = req.headers.authorization?.split(" ")[1];
@@ -50,9 +70,14 @@ app.get("/regeneratetoken", (req, res) => {
         expiresIn: 300,
       }
     );
-    res.json({ newAuthToken: authToken });
+    res
+      .status(200)
+      .json({ status: "success", data: { newAuthToken: authToken } });
   } else {
-    res.json({ msg: `Invalid Refresh Token, Cant generate new token` });
+    res.status(400).json({
+      status: "fail",
+      message: `Invalid Refresh Token, Cant generate new token`,
+    });
   }
 });
 

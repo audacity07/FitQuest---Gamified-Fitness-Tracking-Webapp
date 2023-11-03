@@ -6,15 +6,15 @@ import { useDispatch, useSelector } from "react-redux";
 export const Activity = () => {
   const [activity, setActivity] = useState("");
   const activityData = useSelector((store) => {
-    // console.log(store,"store")
+    // console.log(store,"store1")
     return store.activityReducer.activity;
   });
-  console.log(activityData,"store");
+//   console.log(activityData,"store");
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
     // console.log(activity)
-    dispatch(getActivity({ name: activity }))
+    dispatch(getActivity())
   };
   return (
     <div>

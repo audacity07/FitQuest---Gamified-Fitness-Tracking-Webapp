@@ -1,22 +1,48 @@
 const mongoose = require("mongoose");
+// const { UserModel } = require("./user.model");
+// const { ActivityModel } = require("./activity.model");
 
 const selectedActivitySchema = mongoose.Schema(
   {
-    name: String,
-    currentLevel: Number,
-    totalDays: Number,
-    currentXP: Number,
-    goalPerWeek: Number,
-    date: Number,
-    userID: String,
+    activity: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "activity", // Reference to the ActivityModel
+      required: true,
+    },
+    currentLevel: {
+      type: Number,
+      default: 1,
+    },
+    totalDays: {
+      type: Number,
+      default: 0,
+    },
+    currentXP: {
+      type: Number,
+      default: 0,
+    },
+    goalPerWeek: {
+      type: Number,
+      default: 0,
+    },
+    date: {
+      type: Date,
+      required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   {
     versionKey: false,
+    timestamps: true,
   }
 );
 
 const SelectedActivityModel = mongoose.model(
-  "selectedActivity",
+  "selectedactivity",
   selectedActivitySchema
 );
 module.exports = { SelectedActivityModel };

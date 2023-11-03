@@ -2,7 +2,8 @@ import { GET_ACTIVITY, GET_ACTIVITY_FAILURE,  } from "./actionType"
 
 const initialState = 
     {
-      activity:[]
+      activity:[],
+      isLoading: false,
       }
 
 export const reducer = (state = initialState, { type, payload }) => {
