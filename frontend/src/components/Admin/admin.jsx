@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react"
 import UserCard from "./UserCard"
 import AdminNav from "./AdminRoute/AdminNav"
@@ -37,5 +38,11 @@ function Admin(){
 </div>
         </>
     )
+function Admin() {
+  return (
+    <>
+      
+    </>
+  );
 }
-export default Admin
+export default Admin;
