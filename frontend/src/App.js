@@ -1,4 +1,6 @@
 import './App.css';
+import AdminNav from './components/Admin/AdminRoute/AdminNav';
+import MainRoute from './components/Admin/AdminRoute/MainRoute';
 import Admin from './components/Admin/admin';
 
 import { AllRoutes } from './components/AllRoutes';
@@ -8,8 +10,10 @@ function App() {
 
   return (
     <div >
-      <AllRoutes/>
-      <Admin />
+      {/* <AllRoutes/> */}
+      {/* <AdminNav /> */}
+      {/* <MainRoute /> */}
+      {/* <Admin /> */}
     </div>
   );
 }

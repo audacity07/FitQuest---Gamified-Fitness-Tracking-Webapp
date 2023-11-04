@@ -5,6 +5,7 @@ function AdminNav(){
         <>
         <Link to={"/"}>User</Link>
         <Link to={"/adminActivity"}>Activity</Link>
+        <Link to={"/activity/add"} >AddActivity</Link>
         </>
     )
 }
