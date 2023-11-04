@@ -9,7 +9,7 @@ export const UserBoardNavbar = () => {
                 <h1 className='text-lg text-zinc-700 font-semibold font-[rubik]'> FitQuest</h1>
             </div>
             <div>
-                <Link to='/select-avarat' className='text-zinc-700 font-semibold py-3 px-5 rounded-md hover:bg-[#d5d5d6] transition font-[rubik]'>LOGIN</Link>
+                <Link to='/login' className='text-zinc-700 font-semibold py-3 px-5 rounded-md hover:bg-[#d5d5d6] transition font-[rubik]'>LOGIN</Link>
             </div>
         </div>
     )
