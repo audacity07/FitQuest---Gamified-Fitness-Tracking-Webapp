@@ -1,3 +1,4 @@
+
 import { DELETE_ACTIVITY, DELETE_ACTIVITY_FAILURE, DELETE_ACTIVITY_REQUEST, GET_ACTIVITY, GET_ACTIVITY_FAILURE, GET_ACTIVITY_REQUEST, POST_ACTIVITY, POST_ACTIVITY_FAILURE, POST_ACTIVITY_REQUEST, UPDATE_ACTIVITY, UPDATE_ACTIVITY_FAILURE, UPDATE_ACTIVITY_REQUEST,  } from "./actionType"
 
 const initialState = 
@@ -8,15 +9,18 @@ const initialState =
       errorMessage:""
       }
 
+
 export const reducer = (state = initialState, { type, payload }) => {
 
     switch (type) {
-      
+
         case GET_ACTIVITY: {
+
             return { ...state, activity:payload }
         }
         case GET_ACTIVITY_FAILURE: {
             return {...state, errorMessage:payload,isErr:true}
+
         }
         case GET_ACTIVITY_REQUEST: {
             return {...state, errorMessage:"",isErr:false,isLoading:true}

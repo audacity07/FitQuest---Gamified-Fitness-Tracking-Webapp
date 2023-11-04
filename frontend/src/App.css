@@ -8,6 +8,7 @@ body{
     background-color: #f7f7f7;
 }
 
+
 body::-webkit-scrollbar {
     width: 10px; 
 }
@@ -26,5 +27,26 @@ body::-webkit-scrollbar-thumb:hover {
 
 
 body::-webkit-scrollbar-thumb:active {
+    background-color: #ccaaa0; 
+}
+
+
+.avatarSectionScrollBar::-webkit-scrollbar {
+    height: 7px;
+}
+
+
+.avatarSectionScrollBar::-webkit-scrollbar-thumb {
+    background-color: #2f5b56; 
+    border-radius: 5px; 
+}
+
+
+.avatarSectionScrollBar::-webkit-scrollbar-thumb:hover {
+    background-color: #eac5ba; 
+}
+
+
+.avatarSectionScrollBar::-webkit-scrollbar-thumb:active {
     background-color: #ccaaa0; 
 }

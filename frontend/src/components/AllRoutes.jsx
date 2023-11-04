@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Home } from '../pages/Home/Home'
 import { UserBoard } from '../pages/UserBoard'
 import { AvatarSelect } from '../pages/AvatarSelect'
+import { Login } from '../pages/Login'
 
 export const AllRoutes = () => {
     return (
@@ -10,6 +11,7 @@ export const AllRoutes = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/user-board' element={<UserBoard/>}/>
             <Route path='/select-avarat' element={<AvatarSelect/>}/>
+            <Route path='/login' element={<Login/>}/>
         </Routes>
     )
 }

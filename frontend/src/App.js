@@ -4,16 +4,13 @@ import MainRoute from './components/Admin/AdminRoute/MainRoute';
 import Admin from './components/Admin/admin';
 
 import { AllRoutes } from './components/AllRoutes';
-import { Navbar } from './components/Navbar/Navbar';
+import { Login } from './pages/Login';
 
 function App() {
 
   return (
     <div >
-      {/* <AllRoutes/> */}
-      {/* <AdminNav /> */}
-      {/* <MainRoute /> */}
-      {/* <Admin /> */}
+      <AllRoutes/>
     </div>
   );
 }

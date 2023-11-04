@@ -5,6 +5,7 @@ import UserCard from "./UserCard"
 import AdminNav from "./AdminRoute/AdminNav"
 import MainRoute from "./AdminRoute/MainRoute"
 
+
 // function Admin(){
 //     const [users,setusers] = useState([])
 
@@ -15,11 +16,12 @@ import MainRoute from "./AdminRoute/MainRoute"
 //         console.log(res.data.users)
 //     }
 
-    useEffect(()=>{
-        fetchFun()
-    },[])
+    useEffect(() => {
+        // fetchFun()
+    }, [])
     return (
         <>
+
         <AdminNav />
         
         <div style={{display:"flex",justifyContent:"space-around"}}>
@@ -37,10 +39,12 @@ import MainRoute from "./AdminRoute/MainRoute"
 //                        <UserCard key={item._id} {...item} />
                         
 
+
                     ))
                 }
-</div>
+            </div>
         </>
     )
+
 }
 export default Admin;
