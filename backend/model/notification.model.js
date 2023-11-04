@@ -15,6 +15,11 @@ const notificationSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      required: true,
+    },
   },
   {
     versionKey: false,

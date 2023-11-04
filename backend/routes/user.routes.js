@@ -523,7 +523,7 @@ userRouter.patch("/update/:id", async (req, res) => {
     }
 
     // Update the user
-    await UserModel.findByIdAndUpdate(id, req.body);
+    await UserModel.findByIdAndUpdate({ _id: id }, req.body);
     res.status(200).json({
       status: "success",
       message: "User has been updated",
