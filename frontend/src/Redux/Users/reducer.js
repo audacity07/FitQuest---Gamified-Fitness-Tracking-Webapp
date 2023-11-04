@@ -1,8 +1,8 @@
-import { DELETE_ACTIVITY, DELETE_ACTIVITY_FAILURE, DELETE_ACTIVITY_REQUEST, GET_ACTIVITY, GET_ACTIVITY_FAILURE, GET_ACTIVITY_REQUEST, POST_ACTIVITY, POST_ACTIVITY_FAILURE, POST_ACTIVITY_REQUEST, UPDATE_ACTIVITY, UPDATE_ACTIVITY_FAILURE, UPDATE_ACTIVITY_REQUEST,  } from "./actionType"
+import { DELETE_USER, DELETE_USER_FAILURE, DELETE_USER_REQUEST, GET_USER, GET_USER_FAILURE, GET_USER_REQUEST, POST_USER, POST_USER_FAILURE, POST_USER_REQUEST, UPDATE_USER, UPDATE_USER_FAILURE, UPDATE_USER_REQUEST } from "./actionType"
 
 const initialState = 
     {
-      activity:[],
+      users:[],
       isLoading: false,
       isErr:false,
       errorMessage:""
@@ -12,43 +12,43 @@ export const reducer = (state = initialState, { type, payload }) => {
 
     switch (type) {
       
-        case GET_ACTIVITY: {
-            return { ...state, activity:payload }
+        case GET_USER: {
+            return { ...state, users:payload }
         }
-        case GET_ACTIVITY_FAILURE: {
+        case GET_USER_FAILURE: {
             return {...state, errorMessage:payload,isErr:true}
         }
-        case GET_ACTIVITY_REQUEST: {
+        case GET_USER_REQUEST: {
             return {...state, errorMessage:"",isErr:false,isLoading:true}
         }
        
-        case POST_ACTIVITY: {
-            return { ...state, activity:payload }
+        case POST_USER: {
+            return { ...state, users:payload }
         }
-        case POST_ACTIVITY_FAILURE: {
+        case POST_USER_FAILURE: {
             return {...state, errorMessage:payload,isErr:true}
         }
-        case POST_ACTIVITY_REQUEST: {
+        case POST_USER_REQUEST: {
             return {...state, errorMessage:"",isErr:false,isLoading:true}
         }
 
-        case UPDATE_ACTIVITY: {
-            return { ...state, activity:payload }
+        case UPDATE_USER: {
+            return { ...state, users:payload }
         }
-        case UPDATE_ACTIVITY_FAILURE: {
+        case UPDATE_USER_FAILURE: {
             return {...state, errorMessage:payload,isErr:true}
         }
-        case UPDATE_ACTIVITY_REQUEST: {
+        case UPDATE_USER_REQUEST: {
             return {...state, errorMessage:"",isErr:false,isLoading:true}
         }
 
-        case DELETE_ACTIVITY: {
-            return { ...state, activity:payload }
+        case DELETE_USER: {
+            return { ...state, users:payload }
         }
-        case DELETE_ACTIVITY_FAILURE: {
+        case DELETE_USER_FAILURE: {
             return {...state, errorMessage:payload,isErr:true}
         }
-        case DELETE_ACTIVITY_REQUEST: {
+        case DELETE_USER_REQUEST: {
             return {...state, errorMessage:"",isErr:false,isLoading:true}
         }
 
