@@ -41,6 +41,9 @@ notificationRouter.use(auth);
  *         read:
  *           type: boolean
  *           description: Indicates if the notification has been read.
+ *         sender:
+ *           type: string
+ *           description: The sender ID associated with the notification.
  *         createdAt:
  *           type: string
  *           format: date-time

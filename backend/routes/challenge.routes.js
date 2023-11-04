@@ -51,7 +51,7 @@ challengeRouter.use(auth);
 
 /**
  * @swagger
- * /challenges:
+ * /challenge:
  *   post:
  *     summary: Create a new challenge
  *     description: Create a new challenge with a title and participants.
@@ -110,6 +110,20 @@ challengeRouter.post("/", async (req, res) => {
     // Create a new challenge
     const newChallenge = new ChallengeModel({ title, creator, participants });
     const challenge = await newChallenge.save();
+
+    // Send notifications to invited participants
+    for (const participantId of participants) {
+      if (participantId !== creator) {
+        const notificationContent = `${req.user.username} has invited you to join the challenge: ${title}.`;
+        const newNotification = new NotificationModel({
+          user: participantId,
+          content: notificationContent,
+          read: false,
+        });
+        await newNotification.save();
+      }
+    }
+
     res.status(201).json({
       status: "success",
       data: challenge,
@@ -125,7 +139,7 @@ challengeRouter.post("/", async (req, res) => {
 
 /**
  * @swagger
- * /challenges/user:
+ * /challenge/user:
  *   get:
  *     summary: Get challenges created by the user
  *     description: Retrieve challenges created by the currently authenticated user.
@@ -183,7 +197,7 @@ challengeRouter.get("/user", async (req, res) => {
 
 /**
  * @swagger
- * /challenges/{challengeId}:
+ * /challenge/{challengeId}:
  *   patch:
  *     summary: Update challenge data
  *     description: Update the data of a specific challenge.
@@ -285,7 +299,7 @@ challengeRouter.patch("/:challengeId", async (req, res) => {
 
 /**
  * @swagger
- * /challenges/{challengeId}:
+ * /challenge/{challengeId}:
  *   delete:
  *     summary: Delete a challenge
  *     description: Delete a specific challenge by its ID.
