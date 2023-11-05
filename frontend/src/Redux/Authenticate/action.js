@@ -9,7 +9,8 @@ export const login = (userData) => (dispatch) => {
 
         .then((res) => {
             console.log(res.data);
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.token })
+            localStorage.setItem("token", res.data.data.token)
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.token })
         })
         .catch((err) => {
             dispatch({ type: LOGIN_FAILURE, payload: err.message })

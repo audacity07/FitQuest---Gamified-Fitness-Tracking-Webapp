@@ -1,0 +1,54 @@
+import axios from "axios"
+import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
+
+export const getSelectedActivity = (payload) => (dispatch) => {
+    // console.log(payload,"payload")
+    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
+    return axios
+        .get(`http://localhost:8080/selectedactivity`, {
+            headers: {
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+            }
+        })
+        .then((res) => {
+            dispatch({ type: GET_SELECTED_ACTIVITY, payload: res.data.data.selectedActivities })
+            console.log(res.data)
+        })
+        .catch((err) => {
+            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
+        })
+}
+export const updateSelectedActivity = (id, payload) => (dispatch) => {
+    // console.log(payload,"payload")
+    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
+    return axios
+        .patch(`http://localhost:8080/selectedactivity/update/${id}`, { data: payload }, {
+            headers: {
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+            }
+        })
+        .then((res) => {
+            console.log(res.data.data, "selectedactivity");
+            dispatch({ type: UPDATE_SELECTED_ACTIVITY })
+        })
+        .catch((err) => {
+            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
+        })
+}
+export const deleteSelectedActivity = (id) => (dispatch) => {
+    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
+    return axios
+        .delete(`http://localhost:8080/selectedactivity/delete/${id}`, {
+            headers: {
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+            }
+        })
+
+        .then((res) => {
+            console.log(res.data.data, "selectedactivity");
+            dispatch({ type: DELETE_SELECTED_ACTIVITY })
+        })
+        .catch((err) => {
+            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
+        })
+}

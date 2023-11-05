@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getActivity } from "../Redux/Activity/action";
 
-export const Activity = () => {
+import { useDispatch } from "react-redux";
+import { getFriend } from "../Redux/Friend/action";
+
+export const Friend = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getActivity()).then((res) => {
+    dispatch(getFriend()).then((res) => {
       console.log(res, "res");
     });
   }, []);
-  return <div>Activity</div>;
+  return <div>Friend</div>;
 };
