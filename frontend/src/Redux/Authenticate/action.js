@@ -5,12 +5,13 @@ export const login = (userData) => (dispatch) => {
     dispatch({ type: LOGIN_REQUEST })
     return axios
 
-        .post(`http://localhost:3000/user/login`, userData)
+        .post(`http://localhost:8080/user/login`, userData)
 
         .then((res) => {
             console.log(res.data);
-            localStorage.setItem("token", res.data.data.token)
-            dispatch({ type: LOGIN_SUCCESS, payload: res.data.data.token })
+
+            localStorage.setItem("token", res.data.data.token);
+            dispatch({ type: LOGIN_SUCCESS, payload: res.data.data })
         })
         .catch((err) => {
             dispatch({ type: LOGIN_FAILURE, payload: err.message })

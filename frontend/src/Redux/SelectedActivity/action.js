@@ -1,5 +1,24 @@
 import axios from "axios"
-import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
+
+import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, POST_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
+
+export const postSelectedActivity = (payload) => (dispatch) => {
+    // console.log(payload,"payload")
+    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
+    return axios
+        .post(`http://localhost:8080/selectedactivity/add`, { payload }, {
+            headers: {
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTE4NzkxMCwiZXhwIjoxNjk5NzkyNzEwfQ.A1xhbhs9w56KtZBlt83YHDBLdR55XP938XBtHaNqlgs`
+            }
+        })
+        .then((res) => {
+            console.log(res.data.data, "selectedactivity");
+            dispatch({ type: POST_SELECTED_ACTIVITY })
+        })
+        .catch((err) => {
+            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
+        })
+}
 
 export const getSelectedActivity = (payload) => (dispatch) => {
     // console.log(payload,"payload")
@@ -12,7 +31,7 @@ export const getSelectedActivity = (payload) => (dispatch) => {
         })
         .then((res) => {
             dispatch({ type: GET_SELECTED_ACTIVITY, payload: res.data.data.selectedActivities })
-            console.log(res.data)
+
         })
         .catch((err) => {
             dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })

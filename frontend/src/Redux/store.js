@@ -6,6 +6,8 @@ import { reducer as challengeReducer } from "./Challenge/reducer"
 import { reducer as friendReducer } from "./Friend/reducer"
 import { reducer as selectedactivityReducer } from "./SelectedActivity/reducer"
 
+import { reducer as userReducer } from "./Users/reducer"
+
 import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
@@ -15,5 +17,6 @@ const rootReducer = combineReducers({
     challengeReducer,
     friendReducer,
     selectedactivityReducer
+    userReducer
 })
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk))

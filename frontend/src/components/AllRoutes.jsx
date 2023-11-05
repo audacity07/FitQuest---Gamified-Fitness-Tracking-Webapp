@@ -22,7 +22,9 @@ export const AllRoutes = () => {
       <Route path="/challenges" element={<Challenges />} />
       <Route path="/activity" element={<Activity />} />
       <Route path="/friend" element={<Friend />} />
+       <Route path='/user-activity' element={<AvatarSelect/>}/>
 
     </Routes>
   );
 };
+
