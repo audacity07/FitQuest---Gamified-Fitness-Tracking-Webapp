@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/Authenticate/action";
+import {BiArrowBack} from "react-icons/bi"
+import { Link, Navigate } from "react-router-dom";
 const emoji = ["🏋️", "🏈", "🚴", "⚽", "🏸", "🏊‍♀️", "🏏", "🏑", "⛸", "🎮", "🤿", "🏀", "🏌️", "🏂️", "⚾️", "⛷️", "🚣", "🥏", "🤸", "🤾", "🏇", "🎳", "🏓", "⛸️", "🥊", "🏃️", "⛹️️", "🏊️️", "🏄️️", "🤽️️", "🤼️️", "🏐️️", "🎾️️", "🧘️"]
 export const Login = () => {
   const [emojiIndex, setEmojiIndex] = useState(0);
@@ -8,10 +10,12 @@ export const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
-  const { isAuth, isError } = useSelector((store) => {
+  const { isAuth, isError, isLoading, token } = useSelector((store) => {
     return {
       isAuth: store.authReducer.isAUTH,
       isError: store.authReducer.isError,
+      isLoading: store.authReducer.isLoading,
+      token: store.authReducer.token,
     };
   }, shallowEqual);
 
@@ -34,14 +38,18 @@ export const Login = () => {
       clearInterval(interval);
     };
   }, []);
+  if(isAuth){
+    return <Navigate to={"/user-activity"}/>
+  }
   return (
     <div isAuth={isAuth.toString()} isError={isError.toString()} className="flex justify-center items-center p-10">
-      <div className="w-full">
+      <div className="relative w-full">
+        <Link to={"/user-board"} className="absolute left-[30%] text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack/></Link>
         <div className="text-center">
           <span className="bg-white p-3 rounded-lg text-6xl">{emoji[emojiIndex]}</span>
         </div>
         <div className="mt-10 w-[40%] m-auto">
-          <h2 className="text-center font-[rubik] mb-10 text-4xl font-extrabold text-slate-700">{isAuth ? "LOGIN SUCCESS" : "Welcome back!"}</h2>
+          <h2 className="text-center font-[rubik] mb-10 text-4xl font-extrabold text-slate-700">{token ? "LOGIN SUCCESS" : "Welcome back!"}</h2>
           <div className="flex flex-col gap-10">
             <input
               className="w-full px-2 py-3 rounded-lg outline-orange-200"
@@ -59,7 +67,7 @@ export const Login = () => {
               placeholder="password"
               value={password}
             />
-            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleLogin} className="bg-black text-white py-3 font-medium rounded-lg hover:bg-black/9 0">{isLoading?"Loding...":"Login"}</button>
           </div>
         </div>
       </div>
