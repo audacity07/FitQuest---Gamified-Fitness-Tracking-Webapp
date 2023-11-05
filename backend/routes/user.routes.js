@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const { UserModel } = require("../model/user.model");
 const jwt = require("jsonwebtoken");
 const { BlackListModel } = require("../model/blacklist.model");
+const { auth } = require("../middleware/auth.middleware");
+const { NotificationModel } = require("../model/notification.model");
 
 const userRouter = express.Router();
 
@@ -527,6 +529,118 @@ userRouter.patch("/update/:id", async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "User has been updated",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ status: "fail", error: err.message });
+  }
+});
+
+/**
+ * @swagger
+ * /user/updatechallenge:
+ *   patch:
+ *     summary: Update user's challenge array
+ *     description: Update the details of an existing user challenge by their ID.
+ *     tags:
+ *       - User Routes
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               challengeId:
+ *                 type: string
+ *                 description: The new challengeId for the user (must be unique).
+ *               notificationId:
+ *                 type: string
+ *                 description: The id used to update the notification.
+ *     responses:
+ *       200:
+ *         description: User has been updated successfully.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request (success).
+ *                 message:
+ *                   type: string
+ *                   description: A success message.
+ *       400:
+ *         description: Bad request. Error in request data or validation.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request (fail).
+ *                 error:
+ *                   type: string
+ *                   description: Error message.
+ *       404:
+ *         description: User not found.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request (fail).
+ *                 message:
+ *                   type: string
+ *                   description: Error message.
+ */
+userRouter.patch("/updatechallenge", auth, async (req, res) => {
+  const id = req.user.userID;
+  try {
+    const user = await UserModel.findOne({
+      _id: id,
+    });
+    if (!user) {
+      return res.status(404).json({
+        status: "fail",
+        message: "User not found",
+      });
+    }
+
+    // if (req.user.userID !== user.user.toString()) {
+    //   return res.status(403).json({
+    //     status: "fail",
+    //     message: "You are not authorized to perform this operation.",
+    //   });
+    // }
+
+    // Check if at least one field to update is provided in the request body
+    if (!Object.keys(req.body).length) {
+      return res.status(400).json({
+        status: "fail",
+        message: "No fields to update provided in the request body.",
+      });
+    }
+    // Update the user
+    await UserModel.findByIdAndUpdate(
+      { _id: id },
+      { $push: { acceptedChallenges: req.body.challengeId } },
+      { new: true }
+    );
+
+    // Update notification `read:true`
+    await NotificationModel.findByIdAndUpdate(
+      { _id: req.body.notificationId },
+      { read: "true" }
+    );
+
+    res.status(200).json({
+      status: "success",
+      message: "User challenge array has been updated",
     });
   } catch (err) {
     console.error(err);

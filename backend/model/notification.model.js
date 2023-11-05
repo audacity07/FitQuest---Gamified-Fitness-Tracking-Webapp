@@ -15,10 +15,19 @@ const notificationSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    category: {
+      type: String,
+      enum: ["friend_request", "challenge_request"],
+      required: true,
+    },
     sender: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
       required: true,
+    },
+    challengeId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "challenge",
     },
   },
   {

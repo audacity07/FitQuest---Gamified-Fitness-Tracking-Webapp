@@ -1,6 +1,8 @@
 const express = require("express");
 const { ChallengeModel } = require("../model/challenge.model");
 const { auth } = require("../middleware/auth.middleware");
+const { NotificationModel } = require("../model/notification.model");
+const { UserModel } = require("../model/user.model");
 
 const challengeRouter = express.Router();
 challengeRouter.use(auth);
@@ -111,6 +113,14 @@ challengeRouter.post("/", async (req, res) => {
     const newChallenge = new ChallengeModel({ title, creator, participants });
     const challenge = await newChallenge.save();
 
+    // push the current challenge to the creator's `acceptedChallenge` array
+
+    await UserModel.findByIdAndUpdate(
+      { _id: creator },
+      { $push: { acceptedChallenges: challenge._id } },
+      { new: true }
+    );
+
     // Send notifications to invited participants
     for (const participantId of participants) {
       if (participantId !== creator) {
@@ -119,6 +129,9 @@ challengeRouter.post("/", async (req, res) => {
           user: participantId,
           content: notificationContent,
           read: false,
+          sender: creator,
+          category: "challenge_request",
+          challengeId: challenge._id,
         });
         await newNotification.save();
       }
@@ -139,7 +152,7 @@ challengeRouter.post("/", async (req, res) => {
 
 /**
  * @swagger
- * /challenge/user:
+ * /challenge:
  *   get:
  *     summary: Get challenges created by the user
  *     description: Retrieve challenges created by the currently authenticated user.
@@ -177,14 +190,16 @@ challengeRouter.post("/", async (req, res) => {
  *                   description: Error message.
  */
 
-// Get Challenges by User ID:
-challengeRouter.get("/user", async (req, res) => {
+// Get Challenges by User:
+challengeRouter.get("/", async (req, res) => {
   const userID = req.user.userID;
   try {
-    const challenges = await ChallengeModel.find({ creator: userID });
+    const userData = await UserModel.findById({ _id: userID })
+      .populate("acceptedChallenges")
+      .exec();
     res.status(200).json({
       status: "success",
-      data: challenges,
+      data: userData.acceptedChallenges,
     });
   } catch (err) {
     console.error(err);
