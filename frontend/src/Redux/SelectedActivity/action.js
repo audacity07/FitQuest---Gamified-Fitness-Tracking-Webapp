@@ -1,4 +1,5 @@
 import axios from "axios"
+
 import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, POST_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
 
 export const postSelectedActivity = (payload) => (dispatch) => {
@@ -30,7 +31,7 @@ export const getSelectedActivity = (payload) => (dispatch) => {
         })
         .then((res) => {
             dispatch({ type: GET_SELECTED_ACTIVITY, payload: res.data.data.selectedActivities })
-            // console.log(res.data)
+
         })
         .catch((err) => {
             dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })

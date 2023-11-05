@@ -1,5 +1,6 @@
 
 
+
 import { useEffect, useState } from "react"
 import UserCard from "./UserCard"
 import AdminNav from "./AdminRoute/AdminNav"
@@ -46,5 +47,11 @@ function Admin() {
         </>
     )
 
+        {users.map((item) => (
+          <UserCard key={item._id} {...item} />
+        ))}
+      </div>
+    </>
+  );
 }
 export default Admin;
