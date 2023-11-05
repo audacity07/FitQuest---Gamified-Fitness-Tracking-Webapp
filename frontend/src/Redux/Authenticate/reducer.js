@@ -5,7 +5,8 @@ const initialState = {
     isLoading: "",
     isError: false,
     errorMessage: "",
-    token: ""
+    userID:"",
+    token: localStorage.getItem("token") || "",
 }
 export const reducer = (state = initialState, { type, payload }) => {
 
@@ -14,10 +15,10 @@ export const reducer = (state = initialState, { type, payload }) => {
             return { ...state, isLoading: true }
         }
         case LOGIN_SUCCESS: {
-            return { ...state, isLoading: false, isAUTH: true, token: payload }
+            return { ...state, isLoading: false, isAUTH: true, token: payload.token, userID:payload.userID }
         }
         case LOGIN_FAILURE: {
-            return { ...state, isLoading: false, isAUTH: false, token: "",isError:true,errorMessage:payload}
+            return { ...state, isLoading: false, isAUTH: false, token: "", isError: true, errorMessage: payload }
         }
         default: {
             return state
