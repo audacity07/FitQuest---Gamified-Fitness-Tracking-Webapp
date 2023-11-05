@@ -4,8 +4,6 @@ import Lottie from "lottie-react";
 import downCurvedArrow from "../assets/curved-arrow.json"
 import celebrate from "../assets/celebrate.json"
 
-
-
 export const UserBoard = () => {
     const [barWidth, setBarWidth] = useState(0);
     const [streakCount, setStreakCount] = useState(0);
@@ -14,11 +12,11 @@ export const UserBoard = () => {
 
     const handleButtonClick = () => {
         setBarWidth(prev => prev + 10)
-        setStreakCount(prev=>prev+1)
-        if(streakCount>=9){
+        setStreakCount(prev => prev + 1)
+        if (streakCount >= 9) {
             setStreakCount(0)
         }
-        if(barWidth>=90){
+        if (barWidth >= 90) {
             setAnimationState(true);
             setBarWidth(0);
             setTimeout(() => {
