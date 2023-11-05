@@ -145,12 +145,13 @@ friendRouter.post("/follow", async (req, res) => {
 
     if (!otherUserFriendship) {
       // Create a notification for the other user
-      const notificationContent = `${req.user.username} is following you!`;
+      const notificationContent = `${req.user.username} is following you! Would you like to follow back?`;
       const newNotification = new NotificationModel({
         user: friendId,
         content: notificationContent,
-        sender: userID,
         read: false,
+        category: "friend_request",
+        sender: userID,
       });
 
       await newNotification.save();
@@ -180,7 +181,7 @@ friendRouter.post("/follow", async (req, res) => {
 
 /**
  * @swagger
- * /friend/follow/:
+ * /friend/follow:
  *   patch:
  *     summary: Update friend data
  *     description: Update the friend relationship.
@@ -388,6 +389,104 @@ friendRouter.delete("/unfollow/:friendshipId", async (req, res) => {
         message: "Friendship not found.",
       });
     }
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({
+      status: "fail",
+      error: err.message,
+    });
+  }
+});
+
+/**
+ * @swagger
+ * /friend/followback:
+ *   patch:
+ *     summary: Follow back a user
+ *     description: Update the friend relationship to follow back a user and mark a notification as read.
+ *     tags:
+ *       - Friend Routes
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               notificationId:
+ *                 type: string
+ *                 description: The ID of the notification associated with the friend request.
+ *     responses:
+ *       200:
+ *         description: Friend relationship updated successfully to follow back.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request (success).
+ *                 message:
+ *                   type: string
+ *                   description: Success message (Follow back successful).
+ *       400:
+ *         description: Bad request or error in the request.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request (fail).
+ *                 message:
+ *                   type: string
+ *                   description: Error message (Friendship not found or other error).
+ */
+
+// followback route
+friendRouter.patch("/followback", async (req, res) => {
+  // in response we need to receive the entire notification body
+  const userID = req.user.userID;
+  try {
+    let data = await NotificationModel.findById({
+      _id: req.body.notificationId,
+    });
+    const friendship1 = await FriendModel.findOne({
+      user: userID,
+      friend: data.sender,
+    });
+    const friendship2 = await FriendModel.findOne({
+      user: data.sender,
+      friend: userID,
+    });
+    if (!friendship1 || !friendship2) {
+      res.status(404).json({
+        status: "fail",
+        message: "Friendship not found.",
+      });
+    }
+    await FriendModel.findByIdAndUpdate(friendship1._id, {
+      isFollower: true,
+      isFollowing: true,
+    });
+    await FriendModel.findByIdAndUpdate(friendship2._id, {
+      isFollower: true,
+      isFollowing: true,
+    });
+
+    // Update notification `read:true`
+    await NotificationModel.findByIdAndUpdate(
+      { _id: req.body.notificationId },
+      { read: "true" }
+    );
+    res.status(200).json({
+      status: "success",
+      message: `Follow back successful`,
+    });
   } catch (err) {
     console.error(err);
     res.status(400).json({

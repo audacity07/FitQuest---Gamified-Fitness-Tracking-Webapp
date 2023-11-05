@@ -22,6 +22,12 @@ const userSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    acceptedChallenges: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "challenge",
+      },
+    ],
   },
   {
     versionKey: false,
