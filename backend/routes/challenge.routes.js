@@ -195,8 +195,13 @@ challengeRouter.get("/", async (req, res) => {
   const userID = req.user.userID;
   try {
     const userData = await UserModel.findById({ _id: userID })
-      .populate("acceptedChallenges")
-      .exec();
+    .populate({
+      path: "acceptedChallenges",
+      populate: {
+        path: "creator participants", 
+      },
+    })
+    .exec();
     res.status(200).json({
       status: "success",
       data: userData.acceptedChallenges,

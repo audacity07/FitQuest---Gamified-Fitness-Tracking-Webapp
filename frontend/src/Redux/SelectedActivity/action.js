@@ -6,27 +6,28 @@ export const postSelectedActivity = (payload) => (dispatch) => {
     // console.log(payload,"payload")
     dispatch({ type: SELECTED_ACTIVITY_REQUEST })
     return axios
-        .post(`http://localhost:8080/selectedactivity/add`, { payload }, {
+        .post(`http://localhost:8080/selectedactivity/add`,payload , {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTE4NzkxMCwiZXhwIjoxNjk5NzkyNzEwfQ.A1xhbhs9w56KtZBlt83YHDBLdR55XP938XBtHaNqlgs`
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
             }
         })
         .then((res) => {
-            console.log(res.data.data, "selectedactivity");
-            dispatch({ type: POST_SELECTED_ACTIVITY })
+            console.log(res.data, "selectedactivity");
+            dispatch({ type: POST_SELECTED_ACTIVITY });
+
         })
         .catch((err) => {
             dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
         })
 }
 
-export const getSelectedActivity = (payload) => (dispatch) => {
+export const getSelectedActivity = () => (dispatch) => {
     // console.log(payload,"payload")
     dispatch({ type: SELECTED_ACTIVITY_REQUEST })
     return axios
         .get(`http://localhost:8080/selectedactivity`, {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
             }
         })
         .then((res) => {
@@ -41,14 +42,14 @@ export const updateSelectedActivity = (id, payload) => (dispatch) => {
     // console.log(payload,"payload")
     dispatch({ type: SELECTED_ACTIVITY_REQUEST })
     return axios
-        .patch(`http://localhost:8080/selectedactivity/update/${id}`, { data: payload }, {
+        .patch(`http://localhost:8080/selectedactivity/update/${id}`,  payload , {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
             }
         })
         .then((res) => {
-            console.log(res.data.data, "selectedactivity");
-            dispatch({ type: UPDATE_SELECTED_ACTIVITY })
+            // console.log(res.data.data, "selectedactivity");
+            dispatch({ type: UPDATE_SELECTED_ACTIVITY});
         })
         .catch((err) => {
             dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })

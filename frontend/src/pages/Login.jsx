@@ -32,19 +32,20 @@ export const Login = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setEmojiIndex((prevIndex) => (prevIndex + 1) % emoji.length);
-    }, 500);
+    }, 1000);
 
     return () => {
       clearInterval(interval);
     };
   }, []);
-  if(isAuth){
+
+  if(token){
     return <Navigate to={"/user-activity"}/>
   }
   return (
     <div isAuth={isAuth.toString()} isError={isError.toString()} className="flex justify-center items-center p-10">
       <div className="relative w-full">
-        <Link to={"/user-board"} className="absolute left-[30%] text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack/></Link>
+        <Link to={"/"} className="absolute left-[30%] text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack/></Link>
         <div className="text-center">
           <span className="bg-white p-3 rounded-lg text-6xl">{emoji[emojiIndex]}</span>
         </div>

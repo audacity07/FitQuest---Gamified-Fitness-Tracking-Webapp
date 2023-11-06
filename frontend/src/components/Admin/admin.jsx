@@ -8,14 +8,14 @@ import MainRoute from "./AdminRoute/MainRoute"
 
 
 function Admin() {
-        const [users,setusers] = useState([])
+    const [users, setusers] = useState([])
 
-        const fetchFun = async()=>{
-            let res = await fetch("http://localhost:8080/user")
-            res = await res.json()
-            setusers(res.data.users)
-            console.log(res.data.users)
-        }
+    const fetchFun = async () => {
+        let res = await fetch("http://localhost:8080/user")
+        res = await res.json()
+        setusers(res.data.users)
+        console.log(res.data.users)
+    }
 
     useEffect(() => {
         fetchFun()
@@ -35,23 +35,15 @@ function Admin() {
                 <div><h1>Update</h1></div>
                 <div><h1>Delete</h1></div>
 
-//                 {
+                {
                     users.map((item) => (
                         <UserCard key={item._id} {...item} />
-
-
-
                     ))
                 }
             </div>
         </>
     )
-
-        {users.map((item) => (
-          <UserCard key={item._id} {...item} />
-        ))}
-      </div>
-    </>
-  );
 }
+
+
 export default Admin;

@@ -13,17 +13,15 @@ import { Friend } from "../pages/Friend";
 export const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/user-board" element={<UserBoard />} />
+      <Route path="/" element={<UserBoard />} />
       <Route path="/select-avarat" element={<AvatarSelect />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/notifications" element={<Notification />} />
+      <Route path="/notification" element={<Notification />} />
       <Route path="/selectedactivities" element={<SelectedActivity />} />
-      <Route path="/challenges" element={<Challenges />} />
+      <Route path="/challenge" element={<Challenges />} />
       <Route path="/activity" element={<Activity />} />
       <Route path="/friend" element={<Friend />} />
-       <Route path='/user-activity' element={<AvatarSelect/>}/>
-
+      <Route path='/user-activity' element={<AvatarSelect />} />
     </Routes>
   );
 };

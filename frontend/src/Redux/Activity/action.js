@@ -7,7 +7,7 @@ export const getActivity = (payload) => (dispatch) => {
     return axios
         .get(`http://localhost:8080/activity`)
         .then((res) => {
-            console.log(res.data.data, "activity");
+            // console.log(res.data.data, "activity");
             dispatch({ type: GET_ACTIVITY, payload: res.data.data.activities })
         })
         .catch((err) => {
