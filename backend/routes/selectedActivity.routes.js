@@ -183,6 +183,7 @@ selectedActivityRouter.get("/", async (req, res) => {
       user: req.user.userID,
     })
       .populate("activity")
+      .populate("user")
       .exec();
 
     res.status(200).json({ status: "success", data: { selectedActivities } });

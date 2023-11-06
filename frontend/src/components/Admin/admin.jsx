@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserCard from "./UserCard";
 import AdminNav from "./AdminRoute/AdminNav";
+import { Link } from "react-router-dom";
 
 function Admin() {
   const [users, setUsers] = useState([]);
@@ -21,23 +22,27 @@ function Admin() {
 
   return (
     <div className="p-4">
-      <AdminNav />
+      {/* <AdminNav /> */}
 
-      <div className="flex flex-col items-center justify-center mb-4">
+      <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold mb-4 mt-4">
           Total Users: {users.length}
         </h1>
+        <div>
+          <Link className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3" to="/adminActivity">Activity</Link>
+          <Link className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3" to="/activity/add">Add Activity</Link>
+        </div>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto">
+        <table className="min-w-full text-center">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th className="px-4 py-2 text-left">UserName</th>
-              <th className="px-4 py-2 text-left">Email</th>
-              <th className="px-4 py-2 text-left">CreatedAt</th>
-              <th className="px-4 py-2 text-left">Update</th>
-              <th className="px-4 py-2 text-left">Delete</th>
+              <th className="px-4 py-2">UserName</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">CreatedAt</th>
+              <th className="px-4 py-2">Update</th>
+              <th className="px-4 py-2">Delete</th>
             </tr>
           </thead>
           <tbody>
