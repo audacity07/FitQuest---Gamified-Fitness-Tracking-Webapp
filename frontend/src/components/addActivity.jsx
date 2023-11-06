@@ -6,7 +6,7 @@ function AddActivity() {
   const [emoji, setEmoji] = useState("");
 
   const AddActivityFun = async () => {
-    let res = await fetch("http://localhost:8080/activity/add", {
+    let res = await fetch("https://helpful-jay-neckerchief.cyclic.app/activity/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

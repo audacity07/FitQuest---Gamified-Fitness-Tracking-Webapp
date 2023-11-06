@@ -24,7 +24,7 @@ export function Notification() {
 
   async function handleAcceptChallenge(notificationId, challengeId) {
     try {
-      await axios.patch(`http://localhost:8080/user/updatechallenge`,
+      await axios.patch(`https://helpful-jay-neckerchief.cyclic.app/user/updatechallenge`,
 
         { notificationId, challengeId }, {
         headers: {

@@ -8,7 +8,7 @@ function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("http://localhost:8080/user");
+      const response = await fetch("https://helpful-jay-neckerchief.cyclic.app/user");
       const data = await response.json();
       setUsers(data.data.users);
     } catch (error) {

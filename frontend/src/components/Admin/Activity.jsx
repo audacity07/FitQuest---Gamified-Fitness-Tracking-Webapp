@@ -56,7 +56,7 @@ function Activity() {
 
   const getImojiFun = async () => {
     try {
-      let res = await fetch("http://localhost:8080/activity", {
+      let res = await fetch("https://helpful-jay-neckerchief.cyclic.app/activity", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

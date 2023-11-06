@@ -7,7 +7,7 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/user/delete/${id}`, {
+      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleSaveEdit = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/user/update/${_id}`, {
+      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/update/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
