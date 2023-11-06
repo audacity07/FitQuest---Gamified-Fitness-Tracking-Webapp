@@ -8,7 +8,7 @@ export const postSelectedActivity = (payload) => (dispatch) => {
     return axios
         .post(`http://localhost:8080/selectedactivity/add`,payload , {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTI0NDMyNCwiZXhwIjoxNjk5ODQ5MTI0fQ.ofh19xv1SlP_oPObBO3qVJ1Vhp18FxDq6fjCttEWEQ8`
             }
         })
         .then((res) => {
@@ -27,7 +27,7 @@ export const getSelectedActivity = () => (dispatch) => {
     return axios
         .get(`http://localhost:8080/selectedactivity`, {
             headers: {
-                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
+                Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTI0NDMyNCwiZXhwIjoxNjk5ODQ5MTI0fQ.ofh19xv1SlP_oPObBO3qVJ1Vhp18FxDq6fjCttEWEQ8`
             }
         })
         .then((res) => {

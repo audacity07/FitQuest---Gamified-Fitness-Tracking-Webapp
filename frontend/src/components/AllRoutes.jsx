@@ -9,6 +9,8 @@ import { SelectedActivity } from "../pages/SelectedActivity";
 import { Challenges } from "../pages/Challenges";
 import { Activity } from "../pages/Activity";
 import { Friend } from "../pages/Friend";
+import { LeaderBoard } from "../pages/LeaderBoard";
+import Admin from "../components/Admin/admin"
 
 export const AllRoutes = () => {
   return (
@@ -22,6 +24,7 @@ export const AllRoutes = () => {
       <Route path="/activity" element={<Activity />} />
       <Route path="/friend" element={<Friend />} />
       <Route path='/user-activity' element={<AvatarSelect />} />
+      <Route path='/leaderboard' element={<LeaderBoard />} />
     </Routes>
   );
 };

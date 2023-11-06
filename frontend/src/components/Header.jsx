@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react'
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import clsx from "clsx";
 
 const links = [
@@ -24,7 +24,13 @@ const links = [
 ]
 
 export default function Header() {
-    const [activeSection, setActiveSection] = useState("Home")
+    const [activeSection, setActiveSection] = useState("Home");
+    const navigate = useNavigate();
+
+    const handleLogout = () =>{
+        localStorage.clear();
+        navigate("/");
+    }
     return (
         <header className='z-[999] relative'>
             <motion.div className='fixed top-0 left-1/2  h-[3rem] w-full rounded-none border-white border-opacity-40 bg-white bg-opacity-60 backdrop-blur-[0.5rem] sm:top-6 sm:w-[40rem] sm:rounded-full'
@@ -58,7 +64,7 @@ export default function Header() {
                             </Link>
                         </motion.li>
                     ))}
-                    <button className='-mt-1 py-3 hover:text-gray-950 transition'>Logout</button>
+                    <button onClick={handleLogout} className='-mt-1 py-3 hover:text-gray-950 transition'>Logout</button>
                 </ul>
             </nav>
         </header>

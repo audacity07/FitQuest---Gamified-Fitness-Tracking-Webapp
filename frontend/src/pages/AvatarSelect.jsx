@@ -9,6 +9,7 @@ import { ActivityCard } from '../components/ActivityCard';
 import { getSelectedActivity, postSelectedActivity } from '../Redux/SelectedActivity/action';
 import { getUser } from '../Redux/Users/action';
 import Header from '../components/Header';
+import userLogo from "../assets/user_logo.avif"
 const goal = ["1x", '2x', '3x', '4x', '5x', '6x', '7x'];
 export const AvatarSelect = () => {
     const [open, setOpen] = useState(false);
@@ -51,7 +52,7 @@ export const AvatarSelect = () => {
         <>
             <Header/>
             <div className='bg-[#EFEFEF] py-5 pb-28 pt-28'>
-                <section className='flex justify-center items-start gap-10 '>
+                <section className='flex justify-center items-start gap-28 '>
                     <AnimatePresence>
                         {
                             open &&
@@ -60,7 +61,7 @@ export const AvatarSelect = () => {
                                 initial={{ opacity: 0, x: -200 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -800 }}
-                                className={`w-[40%]`}>
+                                className={`w-[34%]`}>
                                 <div className='flex justify-between items-center'>
                                     <h1 className='text-4xl font-extrabold font-[rubik] text-slate-700'>Create a sport avatar</h1>
                                     <span onClick={toggleMenu} className='text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition'><BiArrowBack /></span>
@@ -81,13 +82,13 @@ export const AvatarSelect = () => {
                                     <p className='text-sm text-zinc-500 font-[rubik] mb-2'>Goal per week</p>
                                     <div className='flex gap-3'>
                                         {goal.map((level, i) => (
-                                            <span key={i} onClick={() => setgoalBorder(i)} className={`flex justify-center items-center bg-white w-[70px] h-[70px] cursor-pointer rounded-full text-lg font-medium border-2 ${i === goalBorder && "border-[#EA5234]"}`}>{level}</span>
+                                            <span key={i} onClick={() => setgoalBorder(i)} className={`flex justify-center items-center bg-white w-[70px] h-[55px] cursor-pointer rounded-full text-lg font-medium border-2 ${i === goalBorder && "border-[#EA5234]"}`}>{level}</span>
                                         ))}
                                     </div>
                                     <p className='text-sm text-zinc-500 font-[rubik] my-2 mb-4'>33 XP completion. Up to 100 XP a week</p>
                                 </div>
                                 <div className='text-center'>
-                                    <button onClick={() => handleSubmitAvatar(selectAvatar)} className='bg-[#EA5234] w-full py-3 rounded-lg text-white font-bold hover:bg-[#c04127] transition'>CREATE AVARAT</button>
+                                    <button onClick={() => handleSubmitAvatar(selectAvatar)} className='bg-[#EA5234] w-full py-3 rounded-lg text-white font-bold hover:bg-[#c04127] transition'>CREATE AVATAR</button>
                                 </div>
                             </motion.div>
                         }
@@ -99,8 +100,8 @@ export const AvatarSelect = () => {
                                     <h3 className='text-base font-[rubik] text-zinc-500'>Hello, </h3>
                                     <p className='text-base font-bold font-[rubik] text-slate-700'>You're a hero!</p>
                                 </div>
-                                <div>
-                                    <img className='rounded-full' src="https://placehold.co/40x40/png" alt="" />
+                                <div className='w-[10%]'>
+                                    <img className='w-full rounded-full' src={userLogo} alt="" />
                                 </div>
                             </div>
                             <div>
