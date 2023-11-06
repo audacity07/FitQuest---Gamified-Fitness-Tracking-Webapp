@@ -5,7 +5,7 @@ const initialState = {
     isLoading: "",
     isError: false,
     errorMessage: "",
-    userID:"",
+    userID: localStorage.getItem("userID") ||"",
     token: localStorage.getItem("token") || "",
 }
 export const reducer = (state = initialState, { type, payload }) => {

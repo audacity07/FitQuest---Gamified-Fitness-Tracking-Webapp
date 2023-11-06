@@ -5,12 +5,13 @@ export const login = (userData) => (dispatch) => {
     dispatch({ type: LOGIN_REQUEST })
     return axios
 
-        .post(`http://localhost:8080/user/login`, userData)
+        .post(`https://helpful-jay-neckerchief.cyclic.app/user/login`, userData)
 
         .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
 
             localStorage.setItem("token", res.data.data.token);
+            localStorage.setItem("userID", res.data.data.userID);
             dispatch({ type: LOGIN_SUCCESS, payload: res.data.data })
         })
         .catch((err) => {
