@@ -1,27 +1,26 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom"
-import clsx from "clsx";
 
 const links = [
-    {
-        name: "Activity",
-        link: "/user-activity"
-    },
-    {
-        name: "Challenge",
-        link: "/challenge"
-    },
-    {
-        name: "Notification",
-        link: "/notification",
-    },
-    {
-        name: "Leaderboard",
-        link: "/leaderboard",
-    }
-]
+  {
+    name: "Activity",
+    link: "/user-activity",
+  },
+  {
+    name: "Challenge",
+    link: "/challenge",
+  },
+  {
+    name: "Notification",
+    link: "/notification",
+  },
+  {
+    name: "Leaderboard",
+    link: "/leaderboard",
+  },
+];
 
 export default function Header() {
     const [activeSection, setActiveSection] = useState("Home");

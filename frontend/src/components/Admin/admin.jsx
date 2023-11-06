@@ -1,11 +1,9 @@
-
 import { useEffect, useState } from "react";
 import UserCard from "./UserCard";
 import AdminNav from "./AdminRoute/AdminNav";
 import { Link } from "react-router-dom";
 
 function Admin() {
-
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {

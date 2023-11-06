@@ -5,9 +5,9 @@ export const getActivity = (payload) => (dispatch) => {
     // console.log(payload,"payload")
     dispatch({ type: GET_ACTIVITY_REQUEST })
     return axios
-        .get(`http://localhost:8080/activity`)
+        .get(`https://helpful-jay-neckerchief.cyclic.app/activity`)
         .then((res) => {
-            // console.log(res.data.data, "activity");
+            console.log(res.data.data, "activity");
             dispatch({ type: GET_ACTIVITY, payload: res.data.data.activities })
         })
         .catch((err) => {
@@ -18,7 +18,7 @@ export const updateActivity = (id) => (dispatch) => {
     // console.log(payload,"payload")
     dispatch({ type: UPDATE_ACTIVITY_REQUEST })
     return axios
-        .patch(`http://localhost:4500/activity/update/${id}`)
+        .patch(`https://helpful-jay-neckerchief.cyclic.app/activity/update/${id}`)
         .then((res) => {
             console.log(res.data.data, "activity");
             dispatch({ type: UPDATE_ACTIVITY, payload: res.data.data.activities })
@@ -30,7 +30,7 @@ export const updateActivity = (id) => (dispatch) => {
 export const deleteActivity = (id) => (dispatch) => {
     dispatch({ type: DELETE_ACTIVITY_REQUEST })
     return axios
-        .patch(`http://localhost:4500/activity/delete/${id}`)
+        .patch(`https://helpful-jay-neckerchief.cyclic.app/activity/delete/${id}`)
         .then((res) => {
             console.log(res.data.data, "activity");
             dispatch({ type: DELETE_ACTIVITY, payload: res.data.data.activities })
