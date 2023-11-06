@@ -4,6 +4,7 @@ import UserCard from "./UserCard";
 import AdminNav from "./AdminRoute/AdminNav";
 
 function Admin() {
+
   const [users, setUsers] = useState([]);
 
   const fetchUsers = async () => {

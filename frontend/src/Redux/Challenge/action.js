@@ -12,7 +12,7 @@ export function getChallenge() {
     try {
       const res = await axios.get("http://localhost:8080/challenge", {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
         }
       });
       console.log(res.data)
@@ -30,7 +30,7 @@ export function postChallenge(paramsObj) {
     try {
       let res = await axios.post(`http://localhost:8080/challenge`, paramsObj, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFqMSIsInVzZXJJRCI6IjY1NDZhNmZmYjE1NzU1Y2Q5ZmFkZWU1NiIsImlhdCI6MTY5OTE3ODQyNywiZXhwIjoxNjk5NzgzMjI3fQ.RLv5l63p5oULqXheqntyAck_msWWpimD8UP8JMw3iVE`
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
         }
       });
       console.log(res.data)

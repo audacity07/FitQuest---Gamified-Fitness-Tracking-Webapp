@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
     notificationReducer,
     challengeReducer,
     friendReducer,
-    selectedactivityReducer
+    selectedactivityReducer,
     userReducer
 })
 export const store = legacy_createStore(rootReducer, applyMiddleware(thunk))

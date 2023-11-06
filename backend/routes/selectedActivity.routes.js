@@ -302,9 +302,15 @@ selectedActivityRouter.patch("/update/:id", async (req, res) => {
 
     // Update the selected activity
     await SelectedActivityModel.findByIdAndUpdate({ _id: id }, req.body);
+    let selectedActivities = await SelectedActivityModel.find({
+      user: req.user.userID,
+    })
+      .populate("activity")
+      .exec();
     res.status(200).json({
       status: "success",
       message: "Activity has been updated",
+      data:selectedActivities
     });
   } catch (err) {
     console.error(err);
