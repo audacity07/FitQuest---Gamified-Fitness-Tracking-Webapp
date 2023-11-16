@@ -303,13 +303,13 @@ userRouter.post("/login", async (req, res) => {
 /**
  * @swagger
  * /user/logout:
- *   get:
+ *   post:
  *     summary: User logout
  *     description: Log out a user by blacklisting their token.
  *     tags:
  *       - User Routes
  *     security:
- *       - BearerAuth: []
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: User has been logged out.
@@ -338,11 +338,11 @@ userRouter.post("/login", async (req, res) => {
  *                   type: string
  *                   description: Error message (missing token in the Authorization header).
  */
-userRouter.get("/logout", async (req, res) => {
-  const token = req.headers.authorization?.split(" ")[1];
+userRouter.post("/logout", async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
   try {
     // Check if the token is present in the Authorization header
-    if (!token) {
+    if (typeof token === "undefined") {
       return res.status(400).json({
         status: "fail",
         message: "Missing token in the Authorization header",

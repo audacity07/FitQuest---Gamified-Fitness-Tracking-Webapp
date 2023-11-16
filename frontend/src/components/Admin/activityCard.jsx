@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
@@ -9,7 +8,7 @@ function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
-        `https://helpful-jay-neckerchief.cyclic.app/activity/delete/${_id}`,
+        `http://localhost:8080/activity/delete/${_id}`,
         {
           method: "DELETE",
           headers: {
@@ -44,7 +43,7 @@ function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const handleSaveEdit = async () => {
     try {
       const response = await fetch(
-        `https://helpful-jay-neckerchief.cyclic.app/activity/update/${_id}`,
+        `http://localhost:8080/activity/update/${_id}`,
         {
           method: "PATCH",
           headers: {

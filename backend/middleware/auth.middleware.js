@@ -18,6 +18,7 @@ const auth = async (req, res, next) => {
     }
 
     // if token is not present in the blacklist then decode it and check if it is valid:
+    // console.log(token);
     jwt.verify(token, "masai", (err, decoded) => {
       if (err) {
         return res.status(400).json({ msg: "Invalid Token" });

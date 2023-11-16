@@ -8,19 +8,19 @@ import { Notification } from "../pages/Notification";
 import { Challenges } from "../pages/Challenges";
 import { Friend } from "../pages/Friend";
 import { LeaderBoard } from "../pages/LeaderBoard";
-import Admin from "../components/Admin/admin"
+import Admin from "../components/Admin/admin";
 
 export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<UserBoard />} />
-      <Route path="/select-avarat" element={<AvatarSelect />} />
+      <Route path="/select-avatar" element={<AvatarSelect />} />
       <Route path="/login" element={<Login />} />
       <Route path="/notification" element={<Notification />} />
       <Route path="/challenge" element={<Challenges />} />
       <Route path="/friend" element={<Friend />} />
-      <Route path='/user-activity' element={<AvatarSelect />} />
-      <Route path='/leaderboard' element={<LeaderBoard />} />
+      <Route path="/user-activity" element={<AvatarSelect />} />
+      <Route path="/leaderboard" element={<LeaderBoard />} />
     </Routes>
   );
 };

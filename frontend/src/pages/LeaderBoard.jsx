@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux"
-import { getUser } from '../Redux/Users/action';
-import Header from "../components/Header"
-import { getSelectedActivity } from '../Redux/SelectedActivity/action';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../Redux/Users/action";
+import Header from "../components/Header";
+import { getSelectedActivity } from "../Redux/SelectedActivity/action";
 export const LeaderBoard = () => {
-    const dispatch = useDispatch()
-    const AllUsers = useSelector((store) => store.userReducer.users);
-    const selectedactivity = useSelector((store) => store.selectedactivityReducer.selectedactivity);
-    const [sortedvalue, setSortedvalue] = useState([])
-    AllUsers.sort((a, b) => b.totalXP - a.totalXP);
-    const [sport, setSport] = useState("");
-    const handleChange = (e) => {
-        const newSport = e.target.value;
-        setSport(newSport);
+  //   const dispatch = useDispatch();
+  //   const AllUsers = useSelector((store) => store.userReducer.users);
+  //   const selectedactivity = useSelector(
+  //     (store) => store.selectedactivityReducer.selectedactivity
+  //   );
+  //   const [sortedvalue, setSortedvalue] = useState([]);
+  //   AllUsers.sort((a, b) => b.totalXP - a.totalXP);
+  //   const [sport, setSport] = useState("");
+  //   const handleChange = (e) => {
+  //     const newSport = e.target.value;
+  //     setSport(newSport);
 
-        let value = selectedactivity
-            .filter(item => item.activity.name.toLowerCase() === newSport)
-        // .sort((a, b) => b.currentXP - a.currentXP);
-        setSortedvalue(value);
-    }
-    console.log(sortedvalue, "value")
-    useEffect(() => {
-        dispatch(getUser)
-        dispatch(getSelectedActivity())
-    }, [])
-    return (
-        <>
-            <Header />
-            <div className='flex justify-center items-center mb-20'>
+  //     let value = selectedactivity.filter(
+  //       (item) => item.activity.name.toLowerCase() === newSport
+  //     );
+  //     // .sort((a, b) => b.currentXP - a.currentXP);
+  //     setSortedvalue(value);
+  //   };
+  //   console.log(sortedvalue, "value");
+  //   useEffect(() => {
+  //     dispatch(getUser);
+  //     dispatch(getSelectedActivity());
+  //   }, []);
+  return (
+    <>
+      <Header />
+      {/* <div className='flex justify-center items-center mb-20'>
                 <div className='w-full'>
                     <div className='mt-28 mb-10 text-center'>
                         <select value={sport} className='px-10 py-5' onChange={handleChange}>
@@ -70,7 +73,7 @@ export const LeaderBoard = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    )
-}
+            </div> */}
+    </>
+  );
+};

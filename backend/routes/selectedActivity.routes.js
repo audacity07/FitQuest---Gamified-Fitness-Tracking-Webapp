@@ -98,30 +98,11 @@ selectedActivityRouter.use(auth);
  *           type: string
  *           format: date
  *           description: The date for the selected activity.
- *         user:
- *           type: string
- *           description: The ID of the user associated with the selected activity.
  */
 selectedActivityRouter.post("/add", async (req, res) => {
   req.body.user = req.user.userID;
   // console.log(req.body);
   try {
-    // // Check if required fields are present in the request body
-    // if (
-    //   !req.body.activity ||
-    //   !req.body.currentLevel ||
-    //   !req.body.totalDays ||
-    //   !req.body.currentXP ||
-    //   !req.body.goalPerWeek ||
-    //   !req.body.date ||
-    //   !req.body.user
-    // ) {
-    //   return res.status(400).json({
-    //     status: "fail",
-    //     message: "Required fields are missing.",
-    //   });
-    // }
-
     let selectedActivity = new SelectedActivityModel(req.body);
     await selectedActivity.save();
     res.status(201).json({
@@ -303,15 +284,9 @@ selectedActivityRouter.patch("/update/:id", async (req, res) => {
 
     // Update the selected activity
     await SelectedActivityModel.findByIdAndUpdate({ _id: id }, req.body);
-    let selectedActivities = await SelectedActivityModel.find({
-      user: req.user.userID,
-    })
-      .populate("activity")
-      .exec();
     res.status(200).json({
       status: "success",
       message: "Activity has been updated",
-      data:selectedActivities
     });
   } catch (err) {
     console.error(err);

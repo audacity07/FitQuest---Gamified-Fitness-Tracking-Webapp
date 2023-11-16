@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotification } from "../Redux/Notification/action";
-import { patchFriend } from "../Redux/Friend/action";
-import axios from "axios";
+import { getFriend, patchFriend } from "../Redux/Friend/action";
+import { updateChallengeArray } from "../Redux/Challenge/action";
 import Header from "../components/Header";
 
 export function Notification() {
@@ -19,28 +19,24 @@ export function Notification() {
     const obj = {
       notificationId: id,
     };
-    dispatch(patchFriend(obj));
+    dispatch(patchFriend(obj)).then(() => dispatch(getFriend()));
   }
 
-  async function handleAcceptChallenge(notificationId, challengeId) {
-    try {
-      await axios.patch(`https://helpful-jay-neckerchief.cyclic.app/user/updatechallenge`,
-
-        { notificationId, challengeId }, {
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRhcGlzaCIsInVzZXJJRCI6IjY1NDY3MDUwNjZhMzA0NzM0NjVjY2FlOCIsImlhdCI6MTY5OTIwMTMyNSwiZXhwIjoxNjk5ODA2MTI1fQ.XIm4Q1_AOY88yLwKLmf2aY36Nf6_ExfK5SlSDjcsk7Y`
-        }
-      });
-    } catch (error) {
-      console.log(error)
-    }
+  function handleAcceptChallenge(notificationId, challengeId) {
+    let obj = {
+      notificationId,
+      challengeId,
+    };
+    dispatch(updateChallengeArray(obj)).then(() => dispatch(getNotification()));
   }
 
   return (
     <>
       <Header />
       <div className="mt-28 text-center">
-        <h1 className="text-2xl font-semibold font-[rubik] text-slate-700">Notification Dashboard</h1>
+        <h1 className="text-2xl font-semibold font-[rubik] text-slate-700">
+          Notification Dashboard
+        </h1>
         {notifications.length > 0 &&
           notifications.map((item) => (
             <div key={item._id} className="flex justify-center items-center">
@@ -51,7 +47,9 @@ export function Notification() {
                       ? "Friend Request"
                       : "#Challenge Invite"}
                   </h2>
-                  <h3 className="mt-2 text-orange-400 font-[rubik] font-medium">{item.content}</h3>
+                  <h3 className="mt-2 text-orange-400 font-[rubik] font-medium">
+                    {item.content}
+                  </h3>
                 </div>
                 <div>
                   {item.category === "friend_request" ? (

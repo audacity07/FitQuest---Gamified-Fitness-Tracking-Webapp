@@ -1,42 +1,57 @@
-import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, POST_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
+import {
+  DELETE_SELECTED_ACTIVITY,
+  GET_SELECTED_ACTIVITY,
+  SELECTED_ACTIVITY_FAILURE,
+  SELECTED_ACTIVITY_REQUEST,
+  UPDATE_SELECTED_ACTIVITY,
+} from "./actionType";
 
-
-const initialState =
-{
-    selectedactivity: [],
-    isLoading: false,
-    isErr: false,
-    errorMessage: ""
-}
-
+const initialState = {
+  selectedactivity: [],
+  isLoading: false,
+  isErr: false,
+  errorMessage: "",
+};
 
 export const reducer = (state = initialState, { type, payload }) => {
-
-    switch (type) {
-
-        case SELECTED_ACTIVITY_REQUEST: {
-
-            return { ...state, isLoading: true }
-        }
-        case SELECTED_ACTIVITY_FAILURE: {
-            return { ...state, errorMessage: payload, isErr: true }
-
-        }
-        case GET_SELECTED_ACTIVITY: {
-            return { ...state, errorMessage: "", isErr: false, isLoading: false, selectedactivity: payload }
-        }
-        case POST_SELECTED_ACTIVITY: {
-            return { ...state }
-        }
-        case UPDATE_SELECTED_ACTIVITY: {
-            return { ...state }
-        }
-        case DELETE_SELECTED_ACTIVITY: {
-            return { ...state }
-        }
-
-        default: {
-            return state
-        }
+  switch (type) {
+    case SELECTED_ACTIVITY_REQUEST: {
+      return { ...state, isLoading: true };
     }
-}
+
+    case SELECTED_ACTIVITY_FAILURE: {
+      return { ...state, errorMessage: payload, isErr: true };
+    }
+
+    case GET_SELECTED_ACTIVITY: {
+      return {
+        ...state,
+        errorMessage: "",
+        isErr: false,
+        isLoading: false,
+        selectedactivity: payload,
+      };
+    }
+
+    case UPDATE_SELECTED_ACTIVITY: {
+      const newArr = state.map((item) => {
+        if (item._id === payload.id) {
+          return { ...item, ...payload.data };
+        }
+        return item;
+      });
+      return { ...state, selectedactivity: newArr };
+    }
+
+    case DELETE_SELECTED_ACTIVITY: {
+      const newArr = state.filter((item) => {
+        return item._id !== payload.id;
+      });
+      return { ...state, selectedactivity: newArr };
+    }
+
+    default: {
+      return state;
+    }
+  }
+};

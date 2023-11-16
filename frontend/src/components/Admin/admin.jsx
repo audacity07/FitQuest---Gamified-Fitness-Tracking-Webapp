@@ -8,7 +8,7 @@ function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("https://helpful-jay-neckerchief.cyclic.app/user");
+      const response = await fetch("http://localhost:8080/user");
       const data = await response.json();
       setUsers(data.data.users);
     } catch (error) {
@@ -29,8 +29,18 @@ function Admin() {
           Total Users: {users.length}
         </h1>
         <div>
-          <Link className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3" to="/adminActivity">Activity</Link>
-          <Link className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3" to="/activity/add">Add Activity</Link>
+          <Link
+            className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3"
+            to="/adminActivity"
+          >
+            Activity
+          </Link>
+          <Link
+            className="mx-2 bg-blue-700 text-white font-medium rounded-md py-2 px-3"
+            to="/activity/add"
+          >
+            Add Activity
+          </Link>
         </div>
       </div>
 
