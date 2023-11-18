@@ -50,9 +50,51 @@ export const AvatarSelect = () => {
     }, [])
     return (
         <>
-            <Header/>
+            <Header currentSection="Activity" />
+            <div className='relative z-10 pt-5 bg-[#EFEFEF]'>
+                <AnimatePresence>
+                    {
+                        open &&
+
+                        <motion.div
+                            initial={{ opacity: 0, x: -200 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -800 }}
+                            className={`absolute px-2  top-20 left-0 bg-[#EFEFEF] w-full md:hidden`}>
+                            <div className='flex justify-between items-center'>
+                                <h1 className='text-4xl font-extrabold font-[rubik] text-slate-700'>Create a sport avatar</h1>
+                                <span onClick={toggleMenu} className='text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition'><BiArrowBack /></span>
+                            </div>
+                            <div className={`avatarSectionScrollBar w-[100%] overflow-y-auto`}>
+                                <div className='mt-10 grid grid-rows-3 grid-flow-col gap-3 my-2 '>
+                                    {activities &&
+                                        activities?.map((activitie) => (
+                                            <span key={activitie._id} onClick={() => handleSeletecEmoji(activitie)} className={`text-4xl bg-[#E6E8EA] p-4 rounded-2xl cursor-pointer border-2 ${activitie._id === selectAvatar._id && "border-[#EA5234]"} `}>{activitie.emoji}</span>
+                                        ))}
+                                </div>
+                            </div>
+                            <div className='my-5'>
+                                <p className='text-sm text-zinc-500 font-[rubik] mb-2'>Avatar name</p>
+                                <span className={`text-zinc-300 ${selectAvatar.name && "text-zinc-800 font-semibold"}`}>{selectAvatar.name || "Your Avatar Name"}</span>
+                            </div>
+                            <div>
+                                <p className='text-sm text-zinc-500 font-[rubik] mb-2'>Goal per week</p>
+                                <div className='flex gap-3'>
+                                    {goal.map((level, i) => (
+                                        <span key={i} onClick={() => setgoalBorder(i)} className={`flex justify-center items-center bg-white w-[70px] cursor-pointer rounded-full text-lg font-medium border-2 ${i === goalBorder && "border-[#EA5234]"}`}>{level}</span>
+                                    ))}
+                                </div>
+                                <p className='text-sm text-zinc-500 font-[rubik] my-2 mb-4'>33 XP completion. Up to 100 XP a week</p>
+                            </div>
+                            <div className='text-center mb-10'>
+                                <button onClick={() => handleSubmitAvatar(selectAvatar)} className='bg-[#EA5234] w-full py-3 rounded-lg text-white font-bold hover:bg-[#c04127] transition'>CREATE AVATAR</button>
+                            </div>
+                        </motion.div>
+                    }
+                </AnimatePresence>
+            </div>
             <div className='bg-[#EFEFEF] py-5 pb-28 pt-28'>
-                <section className='flex justify-center items-start gap-28 '>
+                <section className='flex justify-center items-start gap-10 lg:gap-32'>
                     <AnimatePresence>
                         {
                             open &&
@@ -61,7 +103,7 @@ export const AvatarSelect = () => {
                                 initial={{ opacity: 0, x: -200 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -800 }}
-                                className={`w-[34%]`}>
+                                className={`bg-[#EFEFEF] md:w-[40%] ml-5  hidden md:inline-block`}>
                                 <div className='flex justify-between items-center'>
                                     <h1 className='text-4xl font-extrabold font-[rubik] text-slate-700'>Create a sport avatar</h1>
                                     <span onClick={toggleMenu} className='text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition'><BiArrowBack /></span>
@@ -82,7 +124,7 @@ export const AvatarSelect = () => {
                                     <p className='text-sm text-zinc-500 font-[rubik] mb-2'>Goal per week</p>
                                     <div className='flex gap-3'>
                                         {goal.map((level, i) => (
-                                            <span key={i} onClick={() => setgoalBorder(i)} className={`flex justify-center items-center bg-white w-[70px] h-[55px] cursor-pointer rounded-full text-lg font-medium border-2 ${i === goalBorder && "border-[#EA5234]"}`}>{level}</span>
+                                            <span key={i} onClick={() => setgoalBorder(i)} className={`flex justify-center items-center bg-white w-[70px] md:h-[40px] lg:h-[70px] cursor-pointer rounded-full text-lg font-medium border-2 ${i === goalBorder && "border-[#EA5234]"}`}>{level}</span>
                                         ))}
                                     </div>
                                     <p className='text-sm text-zinc-500 font-[rubik] my-2 mb-4'>33 XP completion. Up to 100 XP a week</p>
@@ -93,18 +135,18 @@ export const AvatarSelect = () => {
                             </motion.div>
                         }
                     </AnimatePresence>
-                    <div div className={`w-[490px] ${selectedActivities.length < 2 && "h-[80vh]"} flex flex-col gap-5 justify-center items-center`}>
+                    <div className={`w-full px-2 ${toggleMenu ? "md:w-[480px] mr-5" : "md:w-[380px] -mr-5"} mr-1  ${selectedActivities.length < 2 && "h-[80vh]"} flex flex-col gap-5 justify-center items-center`}>
                         <div className='w-full flex flex-col justify-between items-center'>
                             <div className='w-full flex justify-between items-center'>
                                 <div>
                                     <h3 className='text-base font-[rubik] text-zinc-500'>Hello, </h3>
                                     <p className='text-base font-bold font-[rubik] text-slate-700'>You're a hero!</p>
                                 </div>
-                                <div className='w-[10%]'>
-                                    <img className='w-full rounded-full' src={userLogo} alt="" />
+                                <div>
+                                    <img className='w-[50px] rounded-full' src={userLogo} alt="" />
                                 </div>
                             </div>
-                            <div>
+                            <div className='w-full'>
                                 {
                                     selectedActivities &&
                                     selectedActivities?.map((activitie) => (

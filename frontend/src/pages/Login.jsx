@@ -40,7 +40,7 @@ export const Login = () => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, []); 
 
   if(token){
     return <Navigate to={"/user-activity"}/>
@@ -48,11 +48,11 @@ export const Login = () => {
   return (
     <div isAuth={isAuth.toString()} isError={isError.toString()} className="flex justify-center items-center p-10">
       <div className="relative w-full">
-        <Link to={"/"} className="absolute left-[30%] text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack/></Link>
+        <Link to={"/"} className="absolute sm:left-[1%] lg:left-[15%] text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack/></Link>
         <div className="text-center">
           <span className="bg-white p-3 rounded-lg text-6xl">{emoji[emojiIndex]}</span>
         </div>
-        <div className="mt-10 w-[40%] m-auto">
+        <div className="mt-10 w-full md:w-full lg:w-[760px] m-auto">
           <h2 className="text-center font-[rubik] mb-10 text-4xl font-extrabold text-slate-700">{token ? "LOGIN SUCCESS" : "Welcome back!"}</h2>
           <div className="flex flex-col gap-10">
             <input

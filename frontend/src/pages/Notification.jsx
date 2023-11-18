@@ -38,7 +38,7 @@ export function Notification() {
 
   return (
     <>
-      <Header />
+      <Header currentSection="Notification" />
       <div className="mt-28 text-center">
         <h1 className="text-2xl font-semibold font-[rubik] text-slate-700">Notification Dashboard</h1>
         {notifications.length > 0 &&

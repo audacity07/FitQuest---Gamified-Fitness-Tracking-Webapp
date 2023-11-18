@@ -29,18 +29,18 @@ export const UserBoard = () => {
             <UserBoardNavbar />
             <section className='bg-[#EFEFEF] py-20'>
                 <div className='w-[82%] m-auto'>
-                    <div className='flex justify-between items-start'>
+                    <div className='flex flex-col lg:flex-row justify-between items-center gap-40'>
                         <div>
                             <h1 className='text-6xl font-extrabold text-slate-700 font-[rubik]'>Gamify your <br />fitness</h1>
-                            <p className='text-xl text-zinc-600 font-[rubik]'>Track your workouts to level up your avatars and climb <br /> leaderboards!</p>
+                            <p className='text-xl text-zinc-600 font-[rubik] mt-5 lg:mt-0'>Track your workouts to level up your avatars and climb <br /> leaderboards!</p>
                         </div>
-                        <div clsrelative="relative">
+                        <div className="relative w-full sm:w-[initial]">
                             <span className='absolute -scale-x-100 rotate-90 ml-20 -mt-1'>
                                 <Lottie animationData={downCurvedArrow} />
                             </span>
                             <span className='absolute ml-32 -mt-2'> tap to grow</span>
-                            <div className='flex items-center gap-10 w-[490px] h-[160px] rounded-2xl bg-white mt-4'>
-                                <div className='ml-10'>
+                            <div className='flex items-center gap-1 sm:gap-10 w-full sm:w-[490px] h-[160px] rounded-2xl bg-white mt-4'>
+                                <div className='ml-1 sm:ml-10'>
                                     <button onClick={handleButtonClick} className='text-6xl active:scale-[0.95] transition'>🏋️</button>
                                 </div>
                                 <div className='w-full'>
@@ -71,7 +71,7 @@ export const UserBoard = () => {
                     <h1 className='font-[rubik] text-5xl font-bold mb-2 text-slate-700'>Exercising consistently is hard</h1>
                     <p className='font-[rubik] text-xl text-zinc-600'>80% of New Year's resolutions fail in 2 months...</p>
                 </div>
-                <div className='flex justify-center gap-10 mt-20'>
+                <div className='flex flex-col md:flex-row flex-wrap justify-center gap-10 px-5 mt-20'>
                     <div className='bg-white p-10 rounded-2xl min-w-[25%]'>
                         <p className='text-6xl mb-6'>🎯</p>
                         <h3 className='text-xl font-bold text-slate-700 font-[rubik] mb-2'>Set a goal</h3>

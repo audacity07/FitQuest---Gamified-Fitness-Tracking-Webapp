@@ -16,8 +16,8 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
 
 
     const handleButtonClick = (_id, barWidth, streakCount) => {
-        setBarWidth(prev=>prev+10)
-        setStreakCount(prev=>prev+1)
+        setBarWidth(prev => prev + 10)
+        setStreakCount(prev => prev + 1)
         if (barWidth >= 100) {
             setAnimationState(true);
             setBarWidth(0);
@@ -27,10 +27,10 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
             const updatedLevels = {
                 currentXP: barWidth + 10 > 100 ? 0 : barWidth + 10,
                 totalDays: streakCount + 1,
-                totalXP:totalXP + currentXP,
+                totalXP: totalXP + currentXP,
                 currentLevel: currentLevel + 1,
             };
-            setCurrentCount(prev=>prev+1);
+            setCurrentCount(prev => prev + 1);
             dispatch(updateSelectedActivity(_id, updatedLevels)).then((res) => (
                 dispatch(getSelectedActivity())
             ));
@@ -41,7 +41,7 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
                 totalDays: streakCount + 1,
                 currentLevel: currentLevel,
             };
-            setCurrentCount(prev=>prev);
+            setCurrentCount(prev => prev);
             dispatch(updateSelectedActivity(_id, updatedLevels)).then((res) => (
                 dispatch(getSelectedActivity())
             ));
@@ -50,8 +50,8 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
     };
     return (
         <div>
-            <div className='flex justify-between items-start'>
-                <div>
+            <div className='w-full flex justify-between items-start'>
+                <div className='w-full'>
                     <div className='relative flex justify-center items-center w-[100%]'>
                         <div className='absolute w-[100%]'>
                             {animationState &&
@@ -59,8 +59,8 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
                             }
                         </div>
                     </div>
-                    <div className='flex items-center gap-10 w-[490px] h-[160px] rounded-2xl bg-white mt-4'>
-                        <div className='ml-10'>
+                    <div className='flex items-center gap-2 bg-white mt-4 h-[160px] rounded-2xl'>
+                        <div className='ml-1'>
                             <button onClick={() => handleButtonClick(_id, barWidth, streakCount)} className='text-6xl active:scale-[0.95] transition'>{activity.emoji}</button>
                         </div>
                         <div className='w-full'>

@@ -26,7 +26,7 @@ export const LeaderBoard = () => {
     }, [])
     return (
         <>
-            <Header />
+            <Header currentSection="Leaderboard"/>
             <div className='flex justify-center items-center mb-20'>
                 <div className='w-full'>
                     <div className='mt-28 mb-10 text-center'>
