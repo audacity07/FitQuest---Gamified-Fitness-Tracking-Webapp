@@ -1,85 +1,85 @@
-.verticalText{
-    writing-mode: vertical-lr;
-    -webkit-text-stroke: 2px #fff;
+.verticalText {
+  writing-mode: vertical-lr;
+  -webkit-text-stroke: 2px #fff;
 }
-.outlinetext{
-    -webkit-text-stroke: 1.5px #fff;
+.outlinetext {
+  -webkit-text-stroke: 1.5px #fff;
 }
-.rotatedText{
-    transform-origin: 0 100px;
+.rotatedText {
+  transform-origin: 0 100px;
 }
-.circleText{
-    animation:rotateText 25s linear infinite;
+.circleText {
+  animation: rotateText 25s linear infinite;
 }
 @keyframes rotateText {
-        0%{
-            transform: rotate(0deg);
-        }
-        100%{
-            transform:rotate(360deg)
-        }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.horizontalScrollText{
-    display: inline-block;  
-    -webkit-text-stroke: 1.5px #000;
-    animation: scrollByX 25s linear infinite;
+.horizontalScrollText {
+  display: inline-block;
+  -webkit-text-stroke: 1.5px #000;
+  animation: scrollByX 25s linear infinite;
 }
-.horizontalScrollText2{
-    -webkit-text-stroke: 1.5px #E9D1CA;
-    margin-inline: 2rem;
+.horizontalScrollText2 {
+  -webkit-text-stroke: 1.5px #e9d1ca;
+  margin-inline: 2rem;
 }
 @keyframes scrollByX {
-    0%{
-        transform: translateX(0%);
-    }
-    100%{
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .mobileLavlink::before {
-    content: attr(dataText);
-    position: absolute;
-    color: #000;
-    width: 0px;
-    overflow: hidden;
-    white-space: nowrap; 
-    transition: width 0.3s ease-in-out; 
+  content: attr(dataText);
+  position: absolute;
+  color: #000;
+  width: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
 }
 
 .mobileLavlink:hover::before {
-    width:100%;
+  width: 100%;
 }
 
 .sendNowBtn::before {
-    content: attr(dataText);
-    position: absolute;
-    color: #fff;
-    width: 0px;
-    overflow: hidden;
-    white-space: nowrap; 
-    transition: width 0.3s ease-in-out; 
+  content: attr(dataText);
+  position: absolute;
+  color: #fff;
+  width: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.3s ease-in-out;
 }
 
 .sendNowBtn:hover::before {
-    width:100%;
+  width: 100%;
 }
 
-.inputCircle:checked + .radioCircle{
-    border-color: #E9D1CA;
+.inputCircle:checked + .radioCircle {
+  border-color: #e9d1ca;
 }
-.inputCircle:hover + .radioCircle + span{
-    color: #E9D1CA;
+.inputCircle:hover + .radioCircle + span {
+  color: #e9d1ca;
 }
-.inputCircle:checked + .radioCircle + span{
-    color: #E9D1CA;
+.inputCircle:checked + .radioCircle + span {
+  color: #e9d1ca;
 }
 
 .radioCircle::before {
-    transform: scale(0);
-    transition: transform .3s ease;
+  transform: scale(0);
+  transition: transform 0.3s ease;
 }
-.inputCircle:checked + .radioCircle::before{
-    transform: scale(1);
+.inputCircle:checked + .radioCircle::before {
+  transform: scale(1);
 }

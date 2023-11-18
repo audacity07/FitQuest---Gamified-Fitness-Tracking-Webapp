@@ -6,22 +6,36 @@ const challengeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+
+    description: {
+      type: String,
+      default: `Details about the new challenge`,
+    },
+
     creator: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
       required: true,
     },
+
+    enteredUsernames: {
+      type: String,
+      required: true,
+    },
+
     participants: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user",
       },
     ],
+
     completed: {
       type: Boolean,
       default: false,
     },
   },
+
   {
     versionKey: false,
     timestamps: true,

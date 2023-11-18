@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { UserBoardNavbar } from '../components/UserBoardNavbar';
+import React, { useState } from "react";
+import { UserBoardNavbar } from "../components/UserBoardNavbar";
 import Lottie from "lottie-react";
-import downCurvedArrow from "../assets/curved-arrow.json"
-import celebrate from "../assets/celebrate.json"
+import downCurvedArrow from "../assets/curved-arrow.json";
+import celebrate from "../assets/celebrate.json";
 
 export const UserBoard = () => {
-    const [barWidth, setBarWidth] = useState(0);
-    const [streakCount, setStreakCount] = useState(0);
-    const [animationState, setAnimationState] = useState(false);
-
+  const [barWidth, setBarWidth] = useState(0);
+  const [streakCount, setStreakCount] = useState(0);
+  const [animationState, setAnimationState] = useState(false);
 
     const handleButtonClick = () => {
         setBarWidth(prev => prev + 10)
@@ -93,14 +92,13 @@ export const UserBoard = () => {
                 </div>
             </section>
 
-            <section>
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </section>
-
+      <section>
+        <div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
-    )
-}
+      </section>
+    </div>
+  );
+};

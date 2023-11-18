@@ -2,21 +2,45 @@ import axios from "axios";
 import {
   NOTIFICATION_FAILURE,
   NOTIFICATION_REQUEST,
-  GET_NOTIFICATION_SUCCESS,
-  DELETE_NOTIFICATION_SUCCESS,
+  GET_NOTIFICATION,
+  DELETE_NOTIFICATION,
+  UPDATE_NOTIFICATION,
 } from "./actionTypes";
-const token = localStorage.getItem("token")
+
+const URL = `http://localhost:8080/notification`;
+
 export function getNotification() {
   return async function (dispatch) {
     dispatch({ type: NOTIFICATION_REQUEST });
+    const token = localStorage.getItem("token");
     try {
-      const res = await axios.get("https://helpful-jay-neckerchief.cyclic.app/notification", {
+      const res = await axios.get(`${URL}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-      console.log(res)
-      dispatch({ type: GET_NOTIFICATION_SUCCESS, payload: res.data.data });
+      dispatch({ type: GET_NOTIFICATION, payload: res.data.data });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: NOTIFICATION_FAILURE });
+    }
+  };
+}
+
+export function updateNotification(id, paramsObj) {
+  return async function (dispatch) {
+    dispatch({ type: NOTIFICATION_REQUEST });
+    const token = localStorage.getItem("token");
+    try {
+      const res = await axios.patch(`${URL}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch({
+        type: UPDATE_NOTIFICATION,
+        payload: { id, data: paramsObj },
+      });
     } catch (error) {
       console.log(error);
       dispatch({ type: NOTIFICATION_FAILURE });
@@ -27,13 +51,14 @@ export function getNotification() {
 export function deleteNotification(id) {
   return async function (dispatch) {
     dispatch({ type: NOTIFICATION_REQUEST });
+    const token = localStorage.getItem("token");
     try {
-      await axios.delete(`https://helpful-jay-neckerchief.cyclic.app/notification/${id}`, {
+      await axios.delete(`${URL}/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       });
-      dispatch({ type: DELETE_NOTIFICATION_SUCCESS });
+      dispatch({ type: DELETE_NOTIFICATION, payload: id });
     } catch (error) {
       console.log(error);
       dispatch({ type: NOTIFICATION_FAILURE });

@@ -1,27 +1,53 @@
-import { LOGIN_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS } from "./actionType"
+import { REQUEST_SUCCESS, REQUEST_FAILURE, LOGIN, LOGOUT } from "./actionType";
 
 const initialState = {
-    isAUTH: false,
-    isLoading: "",
-    isError: false,
-    errorMessage: "",
-    userID: localStorage.getItem("userID") ||"",
-    token: localStorage.getItem("token") || "",
-}
-export const reducer = (state = initialState, { type, payload }) => {
+  isAuth: false,
+  isLoading: "",
+  isError: false,
+  errorMessage: "",
+  userID: localStorage.getItem("userID") || "",
+  token: localStorage.getItem("token") || "",
+};
 
-    switch (type) {
-        case LOGIN_REQUEST: {
-            return { ...state, isLoading: true }
-        }
-        case LOGIN_SUCCESS: {
-            return { ...state, isLoading: false, isAUTH: true, token: payload.token, userID:payload.userID }
-        }
-        case LOGIN_FAILURE: {
-            return { ...state, isLoading: false, isAUTH: false, token: "", isError: true, errorMessage: payload }
-        }
-        default: {
-            return state
-        }
+export const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case REQUEST_SUCCESS: {
+      return { ...state, isLoading: true };
     }
-}
+
+    case REQUEST_FAILURE: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: false,
+        token: "",
+        isError: true,
+        errorMessage: payload,
+      };
+    }
+
+    case LOGIN: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: true,
+        token: payload.token,
+        userID: payload.userID,
+      };
+    }
+
+    case LOGOUT: {
+      return {
+        ...state,
+        isLoading: false,
+        isAuth: false,
+        token: "",
+        userID: "",
+      };
+    }
+
+    default: {
+      return state;
+    }
+  }
+};

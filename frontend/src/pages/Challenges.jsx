@@ -4,30 +4,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { getChallenge, postChallenge } from "../Redux/Challenge/action";
 
 export const Challenges = () => {
-  const [title, setTitle] = useState("")
-  const [friends, setFriends] = useState([])
+  const [title, setTitle] = useState("");
+  const [friends, setFriends] = useState("");
   const dispatch = useDispatch();
-  const challenges = useSelector(store => store.challengeReducer.challenge)
+  const challenges = useSelector((store) => store.challengeReducer.challenges);
 
-  const handleFriendChange = (e) => {
-    setFriends(e.target.value.split(","));
-  }
   const handleSubmit = () => {
     let newChallenge = {
       title,
-      participants: friends
-    }
-    dispatch(postChallenge(newChallenge)).then((res) => (
-      dispatch(getChallenge())
-    ))
-  }
+      enteredUsernames: friends,
+    };
+    dispatch(postChallenge(newChallenge)).then(() => dispatch(getChallenge()));
+  };
   console.log(challenges);
 
   useEffect(() => {
-    dispatch(getChallenge())
-  }, [])
+    dispatch(getChallenge());
+  }, []);
 
-  return <>
+  return(
+     <>
     <Header currentSection="Challenge" />
     <div className="mt-28 flex justify-center items-center">
       <div className="w-full sm:w-[80%] md:w-[600px] px-2">
@@ -35,10 +31,22 @@ export const Challenges = () => {
         <div className="flex flex-col gap-5 mb-5">
           <input type="text" className="py-3 px-3 rounded-lg focus:outline-slate-300 font-[rubik]" placeholder="Title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
 
-          <textarea className="py-3 px-3 rounded-lg focus:outline-slate-300 font-[rubik]" placeholder="Add Friends" type="text" name="friend" value={friends.join(",")} onChange={handleFriendChange} />
+            <textarea
+              className="py-3 px-3 rounded-lg focus:outline-slate-300 font-[rubik]"
+              placeholder="Add Friends"
+              type="text"
+              name="friend"
+              value={friends}
+              onChange={(e) => setFriends(e.target.value)}
+            />
 
-          <button className="bg-black/80 text-white py-2 rounded-lg text-lg font-[rubik]" onClick={handleSubmit}>Submit</button>
-        </div>
+            <button
+              className="bg-black/80 text-white py-2 rounded-lg text-lg font-[rubik]"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          </div>
 
         <div>
           <h1 className="text-3xl font-bold font-[rubik] text-center">Challenges</h1>
@@ -61,18 +69,17 @@ export const Challenges = () => {
                             <li key={item._id} className="list-disc ml-10 font-medium text-slate-700">
                               {item.username}
                             </li>
-                          )
-                          )
-                        }
-                      </ul>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            }
+                ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>;
-  </>
+      ;
+    </>
+  );
 };
