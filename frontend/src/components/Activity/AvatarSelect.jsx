@@ -116,7 +116,7 @@ export const AvatarSelect = () => {
                   <div className='mt-10 grid grid-rows-3 grid-flow-col gap-3 my-2 '>
                     {activities.length > 0 &&
                       activities?.map((activity) => (
-                        <span key={activity._id} onClick={() => handleSeletecEmoji(activity)} className={`text-4xl bg-[#${activity.bgClr}] p-4 rounded-2xl cursor-pointer border-2 ${activity._id === selectAvatar._id && "border-[#EA5234]"} `}>{activity.emoji}</span>
+                        <span key={activity._id} onClick={() => handleSeletecEmoji(activity)} style={{backgroundColor:`${activity.bgClr}`}} className={`text-4xl p-4 rounded-2xl cursor-pointer border-2 ${activity._id === selectAvatar._id && "border-[#EA5234]"} `}>{activity.emoji}</span>
                       ))}
                   </div>
                 </div>

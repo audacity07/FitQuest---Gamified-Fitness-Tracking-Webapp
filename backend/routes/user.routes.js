@@ -144,13 +144,13 @@ userRouter.post("/register", async (req, res) => {
     }
 
     // Check if the password meets the required criteria
-    if (!testPassword(password)) {
-      return res.status(400).json({
-        status: "fail",
-        message:
-          "Password doesn't meet the required criteria. Please ensure it's at least 8 characters long and includes a combination of letters(uppercase & lowercase), numbers, and special characters.",
-      });
-    }
+    // if (!testPassword(password)) {
+    //   return res.status(400).json({
+    //     status: "fail",
+    //     message:
+    //       "Password doesn't meet the required criteria. Please ensure it's at least 8 characters long and includes a combination of letters(uppercase & lowercase), numbers, and special characters.",
+    //   });
+    // }
 
     const hash = await bcrypt.hash(password, 5);
     const newUser = new UserModel({
