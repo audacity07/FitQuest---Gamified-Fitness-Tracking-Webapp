@@ -55,9 +55,7 @@ export const Registration = () => {
             email,
             password
         }
-        setTimeout(() => {
-            dispatch(postUser(newUser)).then(() => navigate("/login"));
-        }, 1000)
+        dispatch(postUser(newUser)).then(() => navigate("/login"));
         toast.success("Registration successfull, Please login ! 🎉")
     }
     useEffect(() => {
