@@ -7,6 +7,7 @@ const initialState = {
   errorMessage: "",
   userID: localStorage.getItem("userID") || "",
   token: localStorage.getItem("token") || "",
+  totalXP: 0,
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -33,6 +34,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         isAuth: true,
         token: payload.token,
         userID: payload.userID,
+        totalXP: payload.totalXP,
       };
     }
 
@@ -43,6 +45,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         isAuth: false,
         token: "",
         userID: "",
+        totalXP: 0,
       };
     }
 

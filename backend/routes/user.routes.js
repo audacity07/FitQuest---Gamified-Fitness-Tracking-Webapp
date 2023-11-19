@@ -292,7 +292,13 @@ userRouter.post("/login", async (req, res) => {
     res.status(200).json({
       status: "success",
       message: "Logged In",
-      data: { userID: user._id, username: user.username, token, refreshToken },
+      data: {
+        userID: user._id,
+        username: user.username,
+        token,
+        refreshToken,
+        totalXP: user.totalXP,
+      },
     });
   } catch (err) {
     console.error(err);
