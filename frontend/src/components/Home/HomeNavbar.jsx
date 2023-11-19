@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const UserBoardNavbar = () => {
+export const HomeNavbar = () => {
     return (
         <div className='flex justify-between items-center px-10 md:px-32 py-6 bg-[#EFEFEF]'>
             <div className='flex items-center gap-2'>

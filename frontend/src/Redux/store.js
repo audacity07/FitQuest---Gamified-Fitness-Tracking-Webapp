@@ -5,7 +5,6 @@ import { reducer as notificationReducer } from "./Notification/reducer"
 import { reducer as challengeReducer } from "./Challenge/reducer"
 import { reducer as friendReducer } from "./Friend/reducer"
 import { reducer as selectedactivityReducer } from "./SelectedActivity/reducer"
-
 import { reducer as userReducer } from "./Users/reducer"
 
 import thunk from "redux-thunk";

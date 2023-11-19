@@ -24,7 +24,7 @@ const links = [
     },
 ];
 
-export default function Header({ currentSection }) {
+export default function Navbar({ currentSection }) {
     const [activeSection, setActiveSection] = useState(currentSection);
     const dispatch = useDispatch()
     const navigate = useNavigate();

@@ -24,7 +24,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     }
 
     case GET_USER: {
-      return { ...state, users: payload };
+      return { ...state, allUsers: payload };
     }
 
     case PATCH_USER: {

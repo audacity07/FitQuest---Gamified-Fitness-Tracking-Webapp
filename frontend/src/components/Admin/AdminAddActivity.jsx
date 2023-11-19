@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
-function AddActivity() {
+function AdminAddActivity({setToggleAddActivity}) {
   const [name, setName] = useState("");
   const [emoji, setEmoji] = useState("");
 
@@ -23,16 +24,14 @@ function AddActivity() {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center"
-      style={{ backgroundImage: `url('/giphy.gif')` }}
-    >
-      <div className="bg-white shadow-md rounded px-8 py-6 mb-4 w-96">
-        <h1 className="text-2xl text-center mb-4 font-bold">Add Activity</h1>
+    <div>
+      <div className="relative bg-[#F7F7F7] shadow-[0px_8px_24px_rgba(149,157,165,0.2)] rounded px-8 py-6 mb-4 w-[600px]">
+        <h1 className="text-2xl text-slate-500 font-[rubik] text-center mb-4 font-bold">Add Activity</h1>
+        <div className="absolute top-3 right-4 cursor-pointer text-xl" onClick={() => setToggleAddActivity(prev => !prev)}><RxCross2 /></div>
         <form onSubmit={handleAdd}>
           <div className="mb-4">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="appearance-none bg-transparent font-[rubik] border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-orange-200"
               type="text"
               placeholder="Enter Activity Name"
               value={name}
@@ -41,7 +40,7 @@ function AddActivity() {
           </div>
           <div className="mb-6">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="font-[rubik] appearance-none bg-transparent border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-orange-200"
               type="text"
               placeholder="Enter Activity Emoji"
               value={emoji}
@@ -50,7 +49,7 @@ function AddActivity() {
           </div>
           <div className="text-center">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-orange-500 w-[60%] hover:bg-orange-700 transition text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Add Activity
@@ -62,4 +61,4 @@ function AddActivity() {
   );
 }
 
-export default AddActivity;
+export default AdminAddActivity;

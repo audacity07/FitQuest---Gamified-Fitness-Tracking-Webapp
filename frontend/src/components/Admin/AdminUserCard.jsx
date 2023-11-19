@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
+function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newUsername, setNewUsername] = useState(username);
   const [newEmail, setNewEmail] = useState(email);
@@ -62,17 +62,17 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
     }
   };
   return (
-    <tr className="border-b border-gray-300">
-      <td className="px-4 py-2">
+    <tr className="">
+      <td className="px-4 py-4">
         {isEditing ? (
           <input
             type="text"
             value={newUsername}
             onChange={(e) => setNewUsername(e.target.value)}
-            className="w-full rounded p-2 border focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full font-[rubik] rounded p-2  font-medium border focus:outline-orange-200"
           />
         ) : (
-          <span className="text-gray-800">{username}</span>
+          <span className="text-gray-500 font-[rubik] font-medium">{username}</span>
         )}
       </td>
       <td className="px-4 py-2">
@@ -81,25 +81,25 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
             type="email"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            className="w-full rounded p-2 border focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full font-[rubik] text-black font-medium rounded p-2 border focus:outline-orange-200"
           />
         ) : (
-          <span>{email}</span>
+          <span className="text-gray-500 font-[rubik] font-medium">{email}</span>
         )}
       </td>
-      <td className="px-4 py-2 hidden md:table-cell">{createdAt}</td>
+      <td className="px-4 py-2 hidden md:table-cell text-gray-500 font-medium font-[rubik]">{createdAt}</td>
       <td className="px-4 py-2">
         {isEditing ? (
           <div className="flex space-x-2">
             <button
               onClick={handleSaveEdit}
-              className="bg-green-500 text-white py-2 px-4 rounded-full"
+              className="bg-lime-500/10 font-[rubik] text-lime-600 font-medium py-2 px-4 rounded-md"
             >
               Save
             </button>
             <button
               onClick={handleCancelEdit}
-              className="bg-gray-500 text-white py-2 px-4 rounded-full"
+              className="bg-slate-500/10 font-[rubik] text-slate-500 font-medium py-2 px-4 rounded-md"
             >
               Cancel
             </button>
@@ -107,7 +107,7 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
         ) : (
           <button
             onClick={handleEdit}
-            className="bg-blue-500 text-white py-2 px-4 rounded-full"
+            className="font-[rubik] bg-yellow-500/10 text-yellow-600 font-medium py-1 px-3 rounded-md"
           >
             Edit
           </button>
@@ -116,7 +116,7 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
       <td className="px-4 py-2">
         <button
           onClick={() => handleDelete(_id)}
-          className="bg-red-500 text-white py-2 px-4 rounded-full"
+          className="font-[rubik] bg-red-300/10 text-red-800 font-medium py-1 px-3 rounded-md"
         >
           Delete
         </button>
@@ -125,4 +125,4 @@ function UserCard({ _id, email, username, createdAt, onDeleteUser }) {
   );
 }
 
-export default UserCard;
+export default AdminUserCard;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getNotification } from "../Redux/Notification/action";
 import { getFriend, patchFriend } from "../Redux/Friend/action";
 import { updateChallengeArray } from "../Redux/Challenge/action";
-import Header from "../components/Header";
+import Header from "../components/Navbar";
 
 export function Notification() {
   const dispatch = useDispatch();

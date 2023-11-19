@@ -3,16 +3,15 @@ import { AiFillPlusCircle } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
-import "../App.css";
-import { getActivity } from "../Redux/Activity/action";
-import { ActivityCard } from "../components/ActivityCard";
+import "../../App.css";
+import { getActivity } from "../../Redux/Activity/action";
+import { ActivityCard } from "./ActivityCard";
 import {
   getSelectedActivity,
   postSelectedActivity,
-} from "../Redux/SelectedActivity/action";
-import { getUser } from "../Redux/Users/action";
-import Header from "../components/Header";
-import userLogo from "../assets/user_logo.avif";
+} from "../../Redux/SelectedActivity/action";
+import Header from "../Navbar";
+import userLogo from "../../assets/user_logo.avif";
 
 const goal = ["1x", "2x", "3x", "4x", "5x", "6x", "7x"];
 
@@ -23,10 +22,8 @@ export const AvatarSelect = () => {
   const selectedActivities = useSelector(
     (store) => store.selectedactivityReducer.selectedactivity
   );
-  const userID = useSelector((store) => store.authReducer.userID);
-  const allUser = useSelector((store) => store.userReducer.allusers);
+
   const [selectAvatar, setSeletecAvatar] = useState("");
-  const [allActivities, setAllActivities] = useState([]);
   console.log(`selectedActivities`, selectedActivities);
   const dispatch = useDispatch();
 
@@ -51,8 +48,8 @@ export const AvatarSelect = () => {
   };
 
   useEffect(() => {
-    dispatch(getSelectedActivity())
-    dispatch(getActivity())
+    dispatch(getSelectedActivity());
+    dispatch(getActivity());
   }, [])
   return (
     <>
@@ -73,14 +70,14 @@ export const AvatarSelect = () => {
               </div>
               <div className={`avatarSectionScrollBar w-[100%] overflow-y-auto`}>
                 <div className='mt-10 grid grid-rows-3 grid-flow-col gap-3 my-2 '>
-                  {activities &&
-                    activities?.map((activitie) => (
-                      <span key={activitie._id} onClick={() => handleSeletecEmoji(activitie)} className={`text-4xl bg-[#E6E8EA] p-4 rounded-2xl cursor-pointer border-2 ${activitie._id === selectAvatar._id && "border-[#EA5234]"} `}>{activitie.emoji}</span>
+                  {activities.length > 0 &&
+                    activities?.map((activity) => (
+                      <span key={activity._id} onClick={() => handleSeletecEmoji(activity)} className={`text-4xl bg-[#E6E8EA] p-4 rounded-2xl cursor-pointer border-2 ${activity._id === selectAvatar._id && "border-[#EA5234]"} `}>{activity.emoji}</span>
                     ))}
                 </div>
               </div>
               <div className='my-5'>
-                <p className='text-sm text-zinc-500 font-[rubik] mb-2'>Avatar name</p>
+                <p className='text-sm text-zinc-500 font-[rubik]  mb-2'>Avatar name</p>
                 <span className={`text-zinc-300 ${selectAvatar.name && "text-zinc-800 font-semibold"}`}>{selectAvatar.name || "Your Avatar Name"}</span>
               </div>
               <div>
@@ -116,9 +113,9 @@ export const AvatarSelect = () => {
                 </div>
                 <div className={`avatarSectionScrollBar w-[100%] overflow-y-auto`}>
                   <div className='mt-10 grid grid-rows-3 grid-flow-col gap-3 my-2 '>
-                    {activities &&
-                      activities?.map((activitie) => (
-                        <span key={activitie._id} onClick={() => handleSeletecEmoji(activitie)} className={`text-4xl bg-[#E6E8EA] p-4 rounded-2xl cursor-pointer border-2 ${activitie._id === selectAvatar._id && "border-[#EA5234]"} `}>{activitie.emoji}</span>
+                    {activities.length > 0 &&
+                      activities?.map((activity) => (
+                        <span key={activity._id} onClick={() => handleSeletecEmoji(activity)} className={`text-4xl bg-[#${activity.bgClr}] p-4 rounded-2xl cursor-pointer border-2 ${activity._id === selectAvatar._id && "border-[#EA5234]"} `}>{activity.emoji}</span>
                       ))}
                   </div>
                 </div>
@@ -154,9 +151,9 @@ export const AvatarSelect = () => {
               </div>
               <div className='w-full'>
                 {
-                  selectedActivities &&
-                  selectedActivities?.map((activitie) => (
-                    <ActivityCard key={activitie._id} {...activitie} />
+                  selectedActivities.length > 0 &&
+                  selectedActivities?.map((activity) => (
+                    <ActivityCard key={activity._id} {...activity} />
                   ))
                 }
               </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../components/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { getChallenge, postChallenge } from "../Redux/Challenge/action";
 

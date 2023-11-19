@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { UserBoardNavbar } from "../components/UserBoardNavbar";
+import { HomeNavbar } from "../components/Home/HomeNavbar";
 import Lottie from "lottie-react";
 import downCurvedArrow from "../assets/curved-arrow.json";
 import celebrate from "../assets/celebrate.json";
+import featureVideo from "../assets/feature1.mp4"
+import feature2 from "../assets/feature2.webp"
+import feature3 from "../assets/feature3.webp"
+import { Link } from "react-router-dom";
 
-export const UserBoard = () => {
-  const [barWidth, setBarWidth] = useState(0);
-  const [streakCount, setStreakCount] = useState(0);
-  const [animationState, setAnimationState] = useState(false);
+export const Home = () => {
+    const [barWidth, setBarWidth] = useState(0);
+    const [streakCount, setStreakCount] = useState(0);
+    const [animationState, setAnimationState] = useState(false);
 
     const handleButtonClick = () => {
         setBarWidth(prev => prev + 10)
@@ -25,7 +29,7 @@ export const UserBoard = () => {
     };
     return (
         <div>
-            <UserBoardNavbar />
+            <HomeNavbar />
             <section className='bg-[#EFEFEF] py-20'>
                 <div className='w-[82%] m-auto'>
                     <div className='flex flex-col lg:flex-row justify-between items-center gap-40'>
@@ -92,13 +96,54 @@ export const UserBoard = () => {
                 </div>
             </section>
 
-      <section>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
+            <section className="bg-[#EFEFEF] py-20">
+                <div>
+                    <div className="flex items-start justify-center gap-12">
+                        <div className="">
+                            <video className="rounded-2xl border border-gray-300 w-96" src={featureVideo} autoPlay muted loop />
+                        </div>
+                        <div className="w-[32%]">
+                            <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">GAMIFICATION</h3>
+                            <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Make workouts fun</h1>
+                            <p className="font-[rubik] text-zinc-500">Choose your workout avatars 🧘 amongst 37 characters.
+                                Track your progress to gain XP and level them up!</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start justify-center gap-12 my-20">
+                        <div className="">
+                            <img className="rounded-2xl border border-gray-300 w-96" src={feature2} />
+                        </div>
+                        <div className="w-[32%]">
+                            <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">FOMO</h3>
+                            <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Never miss your goal</h1>
+                            <p className="font-[rubik] text-zinc-500">If you don't stick to your goal, your avatar loses XP and shrinks...<br />
+                                A good reason to put on your workout shoes!</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-start justify-center gap-12">
+                        <div className="">
+                            <img className="rounded-2xl border border-gray-300 w-96" src={feature3} />
+                        </div>
+                        <div className="w-[32%]">
+                            <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">SOCIAL ACCOUNTABILITY</h3>
+                            <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Climb leaderboards</h1>
+                            <p className="font-[rubik] text-zinc-500">The more XP you earn, the higher you rank in your league. Get that 🥇 golden medal!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="text-center py-20 bg-[#EFEFEF]">
+                <h1 className="text-5xl text-slate-700 font-bold font-[rubik]">You're a hero!</h1>
+                <div className="mt-10 bg-white inline-block py-12 w-[700px] rounded-3xl">
+                    <p className="text-lg text-zinc-600">Sign up for free and grow your avatar!</p>
+                    <div className="mt-10">
+                        <Link to={"/register"} className="text-white bg-orange-600 rounded py-3 px-3 font-[rubik] font-medium">GET MY AVATAR NOW</Link>
+                    </div>
+                </div>
+            </section>
         </div>
-      </section>
-    </div>
-  );
+    );
 };
