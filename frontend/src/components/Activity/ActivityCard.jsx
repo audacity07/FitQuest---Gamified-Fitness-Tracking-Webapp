@@ -74,7 +74,7 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
                                 <p className='font-semibold mb-2 font-[rubik]'>{activity.name}</p>
                                 <div className={`relative z-[5] bg-[#D6D8DB] h-[20px] w-[90%] rounded-full text-xs flex items-center pl-2 font-[rubik] overflow-hidden ${barWidth > 15 && "text-white"} transition`}>
                                     XP {barWidth} / 100
-                                    <div className={`absolute bg-red-500 h-[20px] w-[${barWidth}%] -z-10 rounded-full -ml-2 transition-all duration-700`}></div>
+                                    <div style={{width:`${barWidth}%`}} className={`absolute bg-red-500 h-[20px] -z-10 rounded-full -ml-2 transition-all duration-700`}></div>
                                 </div>
                             </div>
                         </div>

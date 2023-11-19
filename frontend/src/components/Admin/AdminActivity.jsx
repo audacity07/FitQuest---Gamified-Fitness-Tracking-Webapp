@@ -3,19 +3,16 @@ import ActivityCard from "./AdminActivityCard";
 import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt } from "react-icons/fa";
 import { CgLogOut } from "react-icons/cg";
-import { logout } from "../../Redux/Authenticate/action"
-import { useDispatch } from "react-redux";
 import AdminAddActivity from "./AdminAddActivity";
 
 function AdminActivity() {
   const [data, setData] = useState([]);
   const [toggleAddActivity, setToggleAddActivity] = useState(false);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const getImojiFun = async () => {
     try {
-      let res = await fetch("http://localhost:8080/activity", {
+      let res = await fetch("https://helpful-jay-neckerchief.cyclic.app/activity", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

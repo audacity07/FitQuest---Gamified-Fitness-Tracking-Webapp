@@ -2,13 +2,14 @@ import axios from "axios";
 
 import {
   DELETE_SELECTED_ACTIVITY,
+  GET_ALL_SELECTED_ACTIVITY,
   GET_SELECTED_ACTIVITY,
   SELECTED_ACTIVITY_FAILURE,
   SELECTED_ACTIVITY_REQUEST,
   UPDATE_SELECTED_ACTIVITY,
 } from "./actionType";
 
-const URL = `http://localhost:8080/selectedactivity`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/selectedactivity`;
 
 export const postSelectedActivity = (paramsObj) => (dispatch) => {
   dispatch({ type: SELECTED_ACTIVITY_REQUEST });
@@ -41,6 +42,26 @@ export const getSelectedActivity = () => (dispatch) => {
       dispatch({
         type: GET_SELECTED_ACTIVITY,
         payload: res.data.data.selectedActivities,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
+export const getAllSelectedActivity = () => (dispatch) => {
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  axios
+    .get(`${URL}/all`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_ALL_SELECTED_ACTIVITY,
+        payload: res.data.data.allSelectedActivities,
       });
     })
     .catch((err) => {

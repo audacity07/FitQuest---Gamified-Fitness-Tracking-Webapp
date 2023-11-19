@@ -30,7 +30,6 @@ function Admin() {
 
   return (
     <div>
-
       <div className="flex gap-14">
         <div className="w-[22%] h-screen bg-white pt-10 pl-10 shadow-[0px_8px_24px_rgba(149,157,165,0.2)]">
           <p className="font-[rubic] font-semibold text-xl text-slate-600">FitQuest</p>

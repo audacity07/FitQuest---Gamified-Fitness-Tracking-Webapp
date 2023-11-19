@@ -7,7 +7,7 @@ import {
   PATCH_CHALLENGE,
 } from "./actionTypes";
 
-const URL = `http://localhost:8080`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/`;
 
 export function postChallenge(paramsObj) {
   return async function (dispatch) {

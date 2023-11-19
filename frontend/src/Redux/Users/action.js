@@ -7,7 +7,7 @@ import {
   PATCH_USER,
 } from "./actionType";
 
-const URL = `http://localhost:8080`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/`;
 
 export const getUser = () => (dispatch) => {
   dispatch({ type: USER_REQUEST });

@@ -1,5 +1,6 @@
 import {
   DELETE_SELECTED_ACTIVITY,
+  GET_ALL_SELECTED_ACTIVITY,
   GET_SELECTED_ACTIVITY,
   SELECTED_ACTIVITY_FAILURE,
   SELECTED_ACTIVITY_REQUEST,
@@ -7,6 +8,7 @@ import {
 } from "./actionType";
 
 const initialState = {
+  allSelectedActivity: [],
   selectedactivity: [],
   isLoading: false,
   isErr: false,
@@ -30,6 +32,16 @@ export const reducer = (state = initialState, { type, payload }) => {
         isErr: false,
         isLoading: false,
         selectedactivity: payload,
+      };
+    }
+
+    case GET_ALL_SELECTED_ACTIVITY: {
+      return {
+        ...state,
+        errorMessage: "",
+        isErr: false,
+        isLoading: false,
+        allSelectedActivity: payload,
       };
     }
 

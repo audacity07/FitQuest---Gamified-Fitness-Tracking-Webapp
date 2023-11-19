@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Toaster, toast } from 'sonner'
 
 function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -7,7 +8,7 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/user/delete/${id}`, {
+      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/delete/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -17,12 +18,13 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
       if (response.status === 200) {
         // Successful deletion, notify the parent component to update the user list
         onDeleteUser(id);
+        toast.success("User Deleted!")
       } else {
-        alert("Failed to delete user");
+        toast.error("Failed to delete user");
       }
     } catch (error) {
       console.error("Error deleting user:", error);
-      alert("Failed to delete user");
+      toast.error("Failed to delete user");
     }
   };
 
@@ -39,7 +41,7 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleSaveEdit = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/user/update/${_id}`, {
+      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/update/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -52,17 +54,18 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
         setIsEditing(false); // Exit editing mode
         // Update the parent component or state with the new data
         // onUpdateUserData(_id, newUsername, newEmail);
-        alert("User information updated successfully");
+        toast.success("User information updated successfully");
       } else {
-        alert("Failed to update user information");
+        toast.error("Failed to update user information");
       }
     } catch (error) {
       console.error("Error updating user:", error);
-      alert("Failed to update user information");
+      toast.error("Failed to update user information");
     }
   };
   return (
-    <tr className="">
+    <tr>
+      <Toaster richColors position="bottom-left" />
       <td className="px-4 py-4">
         {isEditing ? (
           <input

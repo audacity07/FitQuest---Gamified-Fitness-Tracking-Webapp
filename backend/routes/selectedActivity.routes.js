@@ -174,6 +174,23 @@ selectedActivityRouter.get("/", async (req, res) => {
   }
 });
 
+selectedActivityRouter.get("/all", async (req, res) => {
+  try {
+    let allSelectedActivities = await SelectedActivityModel.find()
+      .populate("activity")
+      .populate("user")
+      .exec();
+
+    res.status(200).json({
+      status: "success",
+      data: { allSelectedActivities: allSelectedActivities },
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ status: "fail", error: err.message });
+  }
+});
+
 /**
  * @swagger
  * /selectedactivity/update/{id}:

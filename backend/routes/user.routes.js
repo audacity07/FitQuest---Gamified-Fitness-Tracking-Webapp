@@ -288,7 +288,6 @@ userRouter.post("/login", async (req, res) => {
         expiresIn: "28d",
       }
     );
-
     res.status(200).json({
       status: "success",
       message: "Logged In",
@@ -298,6 +297,7 @@ userRouter.post("/login", async (req, res) => {
         token,
         refreshToken,
         totalXP: user.totalXP,
+        userData:user
       },
     });
   } catch (err) {

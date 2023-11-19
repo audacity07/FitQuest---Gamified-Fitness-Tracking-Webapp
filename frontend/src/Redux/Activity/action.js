@@ -7,7 +7,7 @@ import {
   PATCH_ACTIVITY,
 } from "./actionType";
 
-const URL = `http://localhost:8080/activity`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/activity`;
 
 export const postActivity = (paramsObj) => (dispatch) => {
   // console.log(payload,"payload")

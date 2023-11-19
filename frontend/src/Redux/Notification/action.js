@@ -7,7 +7,7 @@ import {
   UPDATE_NOTIFICATION,
 } from "./actionTypes";
 
-const URL = `http://localhost:8080/notification`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/notification`;
 
 export function getNotification() {
   return async function (dispatch) {

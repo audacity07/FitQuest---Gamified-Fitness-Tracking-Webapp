@@ -108,8 +108,7 @@ challengeRouter.use(auth);
 // Create a Challenge
 challengeRouter.post("/", async (req, res) => {
   const creator = req.user.userID;
-  const { title, enteredUsernames } = req.body;
-  console.log(title, enteredUsernames);
+  const { title, enteredUsernames, description } = req.body;
   try {
     // Split the enteredUsernames into an array of usernames
     const usernameArray = enteredUsernames
@@ -129,6 +128,7 @@ challengeRouter.post("/", async (req, res) => {
       title,
       creator,
       participants: ids,
+      description,
       enteredUsernames,
     });
     const challenge = await newChallenge.save();

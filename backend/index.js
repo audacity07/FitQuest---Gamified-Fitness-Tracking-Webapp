@@ -38,6 +38,12 @@ const options = {
       {
         url: "http://localhost:8080",
       },
+      {
+        url: "https://posh-division-4370.vercel.app/",
+      },
+      {
+        url: "https://helpful-jay-neckerchief.cyclic.app/",
+      },
     ],
   },
   apis: ["./routes/*.js"],

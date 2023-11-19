@@ -34,8 +34,8 @@ export const Home = () => {
                 <div className='w-[82%] m-auto'>
                     <div className='flex flex-col lg:flex-row justify-between items-center gap-40'>
                         <div>
-                            <h1 className='text-6xl font-extrabold text-slate-700 font-[rubik]'>Gamify your <br />fitness</h1>
-                            <p className='text-xl text-zinc-600 font-[rubik] mt-5 lg:mt-0'>Track your workouts to level up your avatars and climb <br /> leaderboards!</p>
+                            <h1 className='text-6xl font-extrabold text-slate-700 font-sans2'>Gamify your <br />fitness</h1>
+                            <p className='text-xl text-zinc-600 font-[rubik] mt-5 lg:mt-7'>Track your workouts to level up your avatars and climb leaderboards!</p>
                         </div>
                         <div className="relative w-full sm:w-[initial]">
                             <span className='absolute -scale-x-100 rotate-90 ml-20 -mt-1'>
@@ -51,7 +51,7 @@ export const Home = () => {
                                         <p className='text-sm text-zinc-500 font-[rubik]'>Level 1 <span className='bg-[#FCEDEA] py-1 px-2 rounded-md text-base'>🔥{streakCount}</span></p>
                                         <p className='font-semibold mb-2 font-[rubik]'>Metal Lifter</p>
                                         <div className={`relative z-[5] bg-[#D6D8DB] h-[20px] w-[90%] rounded-full text-xs flex items-center pl-2 font-[rubik] overflow-hidden ${barWidth > 15 && "text-white"} transition`}>
-                                            XP {barWidth} / 10
+                                            XP {barWidth} / 100
                                             <div className={`absolute bg-red-500 h-[20px] w-[${barWidth}%] -z-10 rounded-full -ml-2 transition-all duration-700`}></div>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@ export const Home = () => {
             <section className='py-20 pt-40 bg-[#EFEFEF]'>
                 <div className='text-center'>
                     <h1 className='font-[rubik] text-5xl font-bold mb-2 text-slate-700'>Exercising consistently is hard</h1>
-                    <p className='font-[rubik] text-xl text-zinc-600'>80% of New Year's resolutions fail in 2 months...</p>
+                    <p className='font-[rubik] text-xl text-zinc-600 px-5'>80% of New Year's resolutions fail in 2 months...</p>
                 </div>
                 <div className='flex flex-col md:flex-row flex-wrap justify-center gap-10 px-5 mt-20'>
                     <div className='bg-white p-10 rounded-2xl min-w-[25%]'>
@@ -96,13 +96,13 @@ export const Home = () => {
                 </div>
             </section>
 
-            <section className="bg-[#EFEFEF] py-20">
+            <section className="bg-[#EFEFEF] py-20 px-5">
                 <div>
-                    <div className="flex items-start justify-center gap-12">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-12">
                         <div className="">
                             <video className="rounded-2xl border border-gray-300 w-96" src={featureVideo} autoPlay muted loop />
                         </div>
-                        <div className="w-[32%]">
+                        <div className="md:w-[45%] lg:w-[32%]">
                             <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">GAMIFICATION</h3>
                             <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Make workouts fun</h1>
                             <p className="font-[rubik] text-zinc-500">Choose your workout avatars 🧘 amongst 37 characters.
@@ -110,11 +110,11 @@ export const Home = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-start justify-center gap-12 my-20">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-12 my-20">
                         <div className="">
                             <img className="rounded-2xl border border-gray-300 w-96" src={feature2} />
                         </div>
-                        <div className="w-[32%]">
+                        <div className="md:w-[45%] lg:w-[32%]">
                             <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">FOMO</h3>
                             <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Never miss your goal</h1>
                             <p className="font-[rubik] text-zinc-500">If you don't stick to your goal, your avatar loses XP and shrinks...<br />
@@ -122,11 +122,11 @@ export const Home = () => {
                         </div>
                     </div>
 
-                    <div className="flex items-start justify-center gap-12">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-12">
                         <div className="">
                             <img className="rounded-2xl border border-gray-300 w-96" src={feature3} />
                         </div>
-                        <div className="w-[32%]">
+                        <div className="md:w-[45%] lg:w-[32%]">
                             <h3 className="font-[rubik] text-orange-600 text-lg font-semibold">SOCIAL ACCOUNTABILITY</h3>
                             <h1 className="font-[rubik] text-slate-700 text-4xl font-bold my-7">Climb leaderboards</h1>
                             <p className="font-[rubik] text-zinc-500">The more XP you earn, the higher you rank in your league. Get that 🥇 golden medal!</p>
@@ -135,11 +135,11 @@ export const Home = () => {
                 </div>
             </section>
 
-            <section className="text-center py-20 bg-[#EFEFEF]">
+            <section id="register" className="text-center py-20 bg-[#EFEFEF] px-5">
                 <h1 className="text-5xl text-slate-700 font-bold font-[rubik]">You're a hero!</h1>
-                <div className="mt-10 bg-white inline-block py-12 w-[700px] rounded-3xl">
-                    <p className="text-lg text-zinc-600">Sign up for free and grow your avatar!</p>
-                    <div className="mt-10">
+                <div className="mt-10 bg-white inline-block py-5 w-full md:w-[700px] rounded-3xl">
+                    <p className="text-lg text-zinc-600 px-3">Sign up for free and grow your avatar!</p>
+                    <div className="mt-10 mb-2">
                         <Link to={"/register"} className="text-white bg-orange-600 rounded py-3 px-3 font-[rubik] font-medium">GET MY AVATAR NOW</Link>
                     </div>
                 </div>

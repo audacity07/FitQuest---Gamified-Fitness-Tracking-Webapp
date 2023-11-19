@@ -1,7 +1,7 @@
 import axios from "axios";
 import { REQUEST_SUCCESS, REQUEST_FAILURE, LOGIN, LOGOUT } from "./actionType";
 
-const URL = `http://localhost:8080/user`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/user`;
 
 export const login = (paramsObj) => (dispatch) => {
   dispatch({ type: REQUEST_SUCCESS });

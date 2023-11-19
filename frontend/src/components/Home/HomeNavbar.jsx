@@ -10,6 +10,7 @@ export const HomeNavbar = () => {
             </div>
             <div>
                 <Link to='/login' className='text-zinc-700 font-semibold py-3 px-5 rounded-md hover:bg-[#d5d5d6] transition font-[rubik]'>LOGIN</Link>
+                <Link to='/register' className='text-zinc-700 font-semibold py-3 px-5 rounded-md hover:bg-[#d5d5d6] transition font-[rubik]'>SIGN UP</Link>
             </div>
         </div>
     )

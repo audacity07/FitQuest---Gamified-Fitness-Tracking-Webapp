@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,7 @@ import {
 } from "../../Redux/SelectedActivity/action";
 import Header from "../Navbar";
 import userLogo from "../../assets/user_logo.avif";
+import { getUser } from "../../Redux/Users/action";
 
 const goal = ["1x", "2x", "3x", "4x", "5x", "6x", "7x"];
 
@@ -19,14 +20,12 @@ export const AvatarSelect = () => {
   const [open, setOpen] = useState(false);
   const [goalBorder, setgoalBorder] = useState(0);
   const activities = useSelector((store) => store.activityReducer.activity);
+  const userData = useSelector((store) => store.authReducer.userData);
   const selectedActivities = useSelector(
     (store) => store.selectedactivityReducer.selectedactivity
   );
-
   const [selectAvatar, setSeletecAvatar] = useState("");
-  console.log(`selectedActivities`, selectedActivities);
   const dispatch = useDispatch();
-
   const handleSeletecEmoji = (activity) => {
     setSeletecAvatar(activity);
   };
@@ -48,7 +47,9 @@ export const AvatarSelect = () => {
   };
 
   useEffect(() => {
+    
     dispatch(getSelectedActivity());
+    dispatch(getUser())
     dispatch(getActivity());
   }, [])
   return (
@@ -142,7 +143,7 @@ export const AvatarSelect = () => {
             <div className='w-full flex flex-col justify-between items-center'>
               <div className='w-full flex justify-between items-center'>
                 <div>
-                  <h3 className='text-base font-[rubik] text-zinc-500'>Hello, </h3>
+                  <h3 className='text-base font-[rubik] text-zinc-500'>Hello, {userData && userData.username && userData.username[0].toUpperCase()+userData.username.slice(1)}</h3>
                   <p className='text-base font-bold font-[rubik] text-slate-700'>You're a hero!</p>
                 </div>
                 <div>

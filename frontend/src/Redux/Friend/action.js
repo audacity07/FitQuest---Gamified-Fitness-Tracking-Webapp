@@ -7,7 +7,7 @@ import {
   PATCH_FRIEND,
 } from "./actionTypes";
 
-const URL = `http://localhost:8080/friend`;
+const URL = `https://helpful-jay-neckerchief.cyclic.app/friend`;
 
 export function postFriend(paramsObj) {
   return async function (dispatch) {
@@ -44,12 +44,12 @@ export function getFriend() {
   };
 }
 
-export function patchFriend(id) {
+export function patchFriend(paramsObj) {
   return async function (dispatch) {
     dispatch({ type: FRIEND_REQUEST });
     const token = localStorage.getItem("token");
     try {
-      await axios.patch(`${URL}/${id}/followback`, {
+      await axios.patch(`${URL}/followback`, paramsObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

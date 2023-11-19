@@ -8,6 +8,7 @@ const initialState = {
   userID: localStorage.getItem("userID") || "",
   token: localStorage.getItem("token") || "",
   totalXP:0,
+  userData:{}
 };
 
 export const reducer = (state = initialState, { type, payload }) => {
@@ -33,8 +34,9 @@ export const reducer = (state = initialState, { type, payload }) => {
         isLoading: false,
         isAuth: true,
         token: payload.token,
-        userID: payload.userID,
-        totalXP: payload.totalXP
+        userID: localStorage.getItem("userID") || payload.userID,
+        totalXP: payload.totalXP,
+        userData: payload.userData
       };
     }
 
@@ -46,6 +48,7 @@ export const reducer = (state = initialState, { type, payload }) => {
         token: "",
         userID: "",
         totalXP:0,
+        userData:{}
       };
     }
 
