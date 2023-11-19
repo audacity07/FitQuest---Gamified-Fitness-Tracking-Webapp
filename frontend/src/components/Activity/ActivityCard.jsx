@@ -64,7 +64,7 @@ export const ActivityCard = ({ _id, activity, currentXP, currentLevel, totalDays
                             }
                         </div>
                     </div>
-                    <div className='flex items-center gap-2 bg-white mt-4 h-[160px] rounded-2xl'>
+                    <div className='flex items-center gap-2 bg-white shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)] mt-4 h-[160px] rounded-2xl'>
                         <div className='ml-1'>
                             <button onClick={() => handleButtonClick(_id, barWidth, streakCount)} className='text-6xl active:scale-[0.95] transition'>{activity.emoji}</button>
                         </div>

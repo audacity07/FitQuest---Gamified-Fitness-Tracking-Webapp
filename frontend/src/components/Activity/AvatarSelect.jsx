@@ -55,7 +55,7 @@ export const AvatarSelect = () => {
   return (
     <>
       <Header currentSection="Activity" />
-      <div className='relative z-10 pt-5 bg-[#EFEFEF]'>
+      <div className='relative z-10 pt-5 bg-[#F7F7F7]'>
         <AnimatePresence>
           {
             open &&
@@ -64,7 +64,7 @@ export const AvatarSelect = () => {
               initial={{ opacity: 0, x: -200 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -800 }}
-              className={`absolute px-2  top-20 left-0 bg-[#EFEFEF] w-full md:hidden`}>
+              className={`absolute px-2  top-20 left-0 bg-[#F7F7F7] w-full md:hidden`}>
               <div className='flex justify-between items-center'>
                 <h1 className='text-4xl font-extrabold font-[rubik] text-slate-700'>Create a sport avatar</h1>
                 <span onClick={toggleMenu} className='text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition'><BiArrowBack /></span>
@@ -97,7 +97,7 @@ export const AvatarSelect = () => {
           }
         </AnimatePresence>
       </div>
-      <div className='bg-[#EFEFEF] py-5 pb-28 pt-28'>
+      <div className='bg-[#F7F7F7] py-5 pb-28 pt-28'>
         <section className='flex justify-center items-start gap-10 lg:gap-32'>
           <AnimatePresence>
             {
@@ -107,7 +107,7 @@ export const AvatarSelect = () => {
                 initial={{ opacity: 0, x: -200 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -800 }}
-                className={`bg-[#EFEFEF] md:w-[40%] ml-5  hidden md:inline-block`}>
+                className={`bg-[#F7F7F7] md:w-[40%] ml-5  hidden md:inline-block`}>
                 <div className='flex justify-between items-center'>
                   <h1 className='text-4xl font-extrabold font-[rubik] text-slate-700'>Create a sport avatar</h1>
                   <span onClick={toggleMenu} className='text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition'><BiArrowBack /></span>
@@ -160,7 +160,7 @@ export const AvatarSelect = () => {
               </div>
             </div>
             <div className='w-full'>
-              <button onClick={toggleMenu} className='group hover:bg-orange-600 bg-white w-full flex flex-col gap-10 justify-center items-center p-6 rounded-2xl transition duration-300 mt-10'>
+              <button onClick={toggleMenu} className='group hover:bg-orange-600 bg-white shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)] w-full flex flex-col gap-10 justify-center items-center p-6 rounded-2xl transition duration-300 mt-10'>
                 <span className='text-2xl group-hover:text-white transition duration-300'><AiFillPlusCircle /></span>
                 <p className='font-semibold font-[rubik] group-hover:text-white transition duration-300'>ADD SPORT AVATAR</p>
               </button>
