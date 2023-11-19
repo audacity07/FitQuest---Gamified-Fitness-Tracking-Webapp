@@ -71,11 +71,12 @@ challengeRouter.use(auth);
  *               title:
  *                 type: string
  *                 description: The title of the challenge.
- *               participants:
- *                 type: array
- *                 items:
- *                   type: string
- *                 description: An array of user IDs representing the participants of the challenge.
+ *               description:
+ *                 type: string
+ *                 description: The description of the challenge.
+ *               enteredUsernames:
+ *                 type: string
+ *                 description: All enteredUsernames in the form of the array.
  *     responses:
  *       201:
  *         description: Challenge successfully created.
@@ -107,14 +108,32 @@ challengeRouter.use(auth);
 // Create a Challenge
 challengeRouter.post("/", async (req, res) => {
   const creator = req.user.userID;
-  const { title, participants } = req.body;
+  const { title, enteredUsernames, description } = req.body;
   try {
+    // Split the enteredUsernames into an array of usernames
+    const usernameArray = enteredUsernames
+      .split(",")
+      .map((username) => username.trim());
+
+    // Find the user IDs for the participants
+    const participants = await UserModel.find(
+      { username: { $in: usernameArray } },
+      "_id"
+    );
+
+    const ids = participants.map((participant) => participant._id);
+
     // Create a new challenge
-    const newChallenge = new ChallengeModel({ title, creator, participants });
+    const newChallenge = new ChallengeModel({
+      title,
+      creator,
+      participants: ids,
+      description,
+      enteredUsernames,
+    });
     const challenge = await newChallenge.save();
 
-    // push the current challenge to the creator's `acceptedChallenge` array
-
+    // Push the current challenge to the creator's `acceptedChallenges` array
     await UserModel.findByIdAndUpdate(
       { _id: creator },
       { $push: { acceptedChallenges: challenge._id } },
@@ -122,11 +141,11 @@ challengeRouter.post("/", async (req, res) => {
     );
 
     // Send notifications to invited participants
-    for (const participantId of participants) {
-      if (participantId !== creator) {
+    for (const participant of participants) {
+      if (participant._id.toString() !== creator) {
         const notificationContent = `${req.user.username} has invited you to join the challenge: ${title}.`;
         const newNotification = new NotificationModel({
-          user: participantId,
+          user: participant._id,
           content: notificationContent,
           read: false,
           sender: creator,
@@ -189,7 +208,6 @@ challengeRouter.post("/", async (req, res) => {
  *                   type: string
  *                   description: Error message.
  */
-
 // Get Challenges by User:
 challengeRouter.get("/", async (req, res) => {
   const userID = req.user.userID;
@@ -286,7 +304,6 @@ challengeRouter.get("/", async (req, res) => {
  *                   type: string
  *                   description: Error message (challenge not found).
  */
-
 // Update Challenge Data:
 challengeRouter.patch("/:challengeId", async (req, res) => {
   const challengeId = req.params.challengeId;
@@ -374,7 +391,6 @@ challengeRouter.patch("/:challengeId", async (req, res) => {
  *                   type: string
  *                   description: Error message.
  */
-
 // Delete a Challenge
 challengeRouter.delete("/:challengeId", async (req, res) => {
   const challengeId = req.params.challengeId;

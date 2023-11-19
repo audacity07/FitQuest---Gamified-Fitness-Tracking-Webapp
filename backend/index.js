@@ -38,6 +38,12 @@ const options = {
       {
         url: "http://localhost:8080",
       },
+      {
+        url: "https://posh-division-4370.vercel.app/",
+      },
+      {
+        url: "https://helpful-jay-neckerchief.cyclic.app/",
+      },
     ],
   },
   apis: ["./routes/*.js"],
@@ -86,6 +92,6 @@ app.listen(process.env.PORT, async () => {
   try {
     await connection;
     console.log(`Connected to DB`);
-  } catch (error) { }
+  } catch (error) {}
   console.log(`Server is running on ${process.env.PORT}`);
 });

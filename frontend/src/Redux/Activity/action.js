@@ -1,41 +1,62 @@
-import axios from "axios"
-import { DELETE_ACTIVITY, DELETE_ACTIVITY_FAILURE, DELETE_ACTIVITY_REQUEST, GET_ACTIVITY, GET_ACTIVITY_FAILURE, GET_ACTIVITY_REQUEST, UPDATE_ACTIVITY, UPDATE_ACTIVITY_FAILURE, UPDATE_ACTIVITY_REQUEST } from "./actionType";
+import axios from "axios";
+import {
+  ACTIVITY_FAILURE,
+  ACTIVITY_REQUEST,
+  DELETE_ACTIVITY,
+  GET_ACTIVITY,
+  PATCH_ACTIVITY,
+} from "./actionType";
 
-export const getActivity = (payload) => (dispatch) => {
-    // console.log(payload,"payload")
-    dispatch({ type: GET_ACTIVITY_REQUEST })
-    return axios
-        .get(`https://helpful-jay-neckerchief.cyclic.app/activity`)
-        .then((res) => {
-            console.log(res.data.data, "activity");
-            dispatch({ type: GET_ACTIVITY, payload: res.data.data.activities })
-        })
-        .catch((err) => {
-            dispatch({ type: GET_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
-export const updateActivity = (id) => (dispatch) => {
-    // console.log(payload,"payload")
-    dispatch({ type: UPDATE_ACTIVITY_REQUEST })
-    return axios
-        .patch(`https://helpful-jay-neckerchief.cyclic.app/activity/update/${id}`)
-        .then((res) => {
-            console.log(res.data.data, "activity");
-            dispatch({ type: UPDATE_ACTIVITY, payload: res.data.data.activities })
-        })
-        .catch((err) => {
-            dispatch({ type: UPDATE_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
+const URL = `https://helpful-jay-neckerchief.cyclic.app/activity`;
+
+export const postActivity = (paramsObj) => (dispatch) => {
+  // console.log(payload,"payload")
+  dispatch({ type: ACTIVITY_REQUEST });
+  return axios
+    .post(`${URL}/add`, paramsObj)
+    .then(() => {})
+    .catch((err) => {
+      dispatch({ type: ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
+export const getActivity = () => (dispatch) => {
+  // console.log(payload,"payload")
+  dispatch({ type: ACTIVITY_REQUEST });
+  return axios
+    .get(`${URL}`)
+    .then((res) => {
+      dispatch({ type: GET_ACTIVITY, payload: res.data.data.activities });
+    })
+    .catch((err) => {
+      dispatch({ type: ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
+export const updateActivity = (id, paramsObj) => (dispatch) => {
+  // console.log(payload,"payload")
+  dispatch({ type: ACTIVITY_REQUEST });
+  return axios
+    .patch(`${URL}/update/${id}`, paramsObj)
+    .then((res) => {
+      dispatch({
+        type: PATCH_ACTIVITY,
+        payload: { id, data: paramsObj },
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
 export const deleteActivity = (id) => (dispatch) => {
-    dispatch({ type: DELETE_ACTIVITY_REQUEST })
-    return axios
-        .patch(`https://helpful-jay-neckerchief.cyclic.app/activity/delete/${id}`)
-        .then((res) => {
-            console.log(res.data.data, "activity");
-            dispatch({ type: DELETE_ACTIVITY, payload: res.data.data.activities })
-        })
-        .catch((err) => {
-            dispatch({ type: DELETE_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
+  dispatch({ type: ACTIVITY_REQUEST });
+  return axios
+    .patch(`${URL}/delete/${id}`)
+    .then((res) => {
+      dispatch({ type: DELETE_ACTIVITY, payload: id });
+    })
+    .catch((err) => {
+      dispatch({ type: ACTIVITY_FAILURE, payload: err.message });
+    });
+};

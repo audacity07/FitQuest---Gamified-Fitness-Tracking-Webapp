@@ -1,75 +1,107 @@
-import axios from "axios"
+import axios from "axios";
 
-import { DELETE_SELECTED_ACTIVITY, GET_SELECTED_ACTIVITY, POST_SELECTED_ACTIVITY, SELECTED_ACTIVITY_FAILURE, SELECTED_ACTIVITY_REQUEST, UPDATE_SELECTED_ACTIVITY } from "./actionType"
+import {
+  DELETE_SELECTED_ACTIVITY,
+  GET_ALL_SELECTED_ACTIVITY,
+  GET_SELECTED_ACTIVITY,
+  SELECTED_ACTIVITY_FAILURE,
+  SELECTED_ACTIVITY_REQUEST,
+  UPDATE_SELECTED_ACTIVITY,
+} from "./actionType";
 
-const token = localStorage.getItem("token")
-export const postSelectedActivity = (payload) => (dispatch) => {
-    // console.log(payload,"payload")
-    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
-    return axios
-        .post(`https://helpful-jay-neckerchief.cyclic.app/selectedactivity/add`, payload, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then((res) => {
-            console.log(res.data, "selectedactivity");
-            dispatch({ type: POST_SELECTED_ACTIVITY });
+const URL = `https://helpful-jay-neckerchief.cyclic.app/selectedactivity`;
 
-        })
-        .catch((err) => {
-            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
+export const postSelectedActivity = (paramsObj) => (dispatch) => {
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  return axios
+    .post(`${URL}/add`, paramsObj, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      // console.log(res.data, "selectedactivity");
+      // dispatch({ type: POST_SELECTED_ACTIVITY });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};
 
 export const getSelectedActivity = () => (dispatch) => {
-    // console.log(payload,"payload")
-    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
-    return axios
-        .get(`https://helpful-jay-neckerchief.cyclic.app/selectedactivity`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then((res) => {
-            dispatch({ type: GET_SELECTED_ACTIVITY, payload: res.data.data.selectedActivities })
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  axios
+    .get(`${URL}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_SELECTED_ACTIVITY,
+        payload: res.data.data.selectedActivities,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};
 
-        })
-        .catch((err) => {
-            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
-export const updateSelectedActivity = (id, payload) => (dispatch) => {
-    // console.log(payload,"payload")
-    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
-    return axios
-        .patch(`https://helpful-jay-neckerchief.cyclic.app/selectedactivity/update/${id}`, payload, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-        .then((res) => {
-            // console.log(res.data.data, "selectedactivity");
-            dispatch({ type: UPDATE_SELECTED_ACTIVITY });
-        })
-        .catch((err) => {
-            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
+export const getAllSelectedActivity = () => (dispatch) => {
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  axios
+    .get(`${URL}/all`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_ALL_SELECTED_ACTIVITY,
+        payload: res.data.data.allSelectedActivities,
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
+export const updateSelectedActivity = (id, paramsObj) => (dispatch) => {
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  return axios
+    .patch(`${URL}/update/${id}`, paramsObj, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: UPDATE_SELECTED_ACTIVITY,
+        payload: { id, data: paramsObj },
+      });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};
+
 export const deleteSelectedActivity = (id) => (dispatch) => {
-    dispatch({ type: SELECTED_ACTIVITY_REQUEST })
-    return axios
-        .delete(`https://helpful-jay-neckerchief.cyclic.app/selectedactivity/delete/${id}`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        })
-
-        .then((res) => {
-            console.log(res.data.data, "selectedactivity");
-            dispatch({ type: DELETE_SELECTED_ACTIVITY })
-        })
-        .catch((err) => {
-            dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message })
-        })
-}
+  dispatch({ type: SELECTED_ACTIVITY_REQUEST });
+  const token = localStorage.getItem("token");
+  return axios
+    .delete(`${URL}/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({ type: DELETE_SELECTED_ACTIVITY, payload: id });
+    })
+    .catch((err) => {
+      dispatch({ type: SELECTED_ACTIVITY_FAILURE, payload: err.message });
+    });
+};

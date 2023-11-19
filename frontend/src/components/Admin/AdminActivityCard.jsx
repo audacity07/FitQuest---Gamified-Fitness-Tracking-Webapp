@@ -1,7 +1,7 @@
-
 import { useState } from "react";
+import { Toaster, toast } from 'sonner'
 
-function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
+function AdminActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const [newUsername, setNewUsername] = useState(name);
   const [newEmail, setNewEmail] = useState(emoji);
@@ -21,12 +21,13 @@ function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
       if (response.status === 200) {
         // Successful deletion, notify the parent component to update the user list
         onDeleteUser(id);
+        toast.success("Activity Deleted !")
       } else {
-        alert("Failed to delete user");
+        toast.error("Failed to delete activity");
       }
     } catch (error) {
-      console.error("Error deleting user:", error);
-      alert("Failed to delete user");
+      console.error("Error deleting activity:", error);
+      toast.error("Failed to delete activity");
     }
   };
 
@@ -59,28 +60,29 @@ function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
         setIsEditing(false); // Exit editing mode
         // Update the parent component or state with the new data
         // onUpdateUserData(_id, newUsername, newEmail);
-        alert("User information updated successfully");
+        toast.success("Activity information updated successfully");
       } else {
-        alert("Failed to update user information");
+        toast.error("Failed to update activity information");
       }
     } catch (error) {
-      console.error("Error updating user:", error);
-      alert("Failed to update user information");
+      console.error("Error updating activity:", error);
+      toast.error("Failed to update activity information");
     }
   };
 
   return (
-    <tr className="border-b border-gray-300 min-w-full">
+    <tr className="border-b border-gray-100 min-w-full">
+      <Toaster richColors position="top-center" />
       <td className="px-4 py-2">
         {isEditing ? (
           <input
             type="text"
             value={newUsername}
             onChange={(e) => setNewUsername(e.target.value)}
-            className="w-full rounded p-2 border focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full font-[rubik] font-medium text-gray-500 rounded p-2 border focus:outline-orange-200"
           />
         ) : (
-          <span className="text-gray-800">{name}</span>
+          <span className="text-gray-500 font-[rubik] font-medium">{name}</span>
         )}
       </td>
       <td className="px-4 py-2">
@@ -89,48 +91,51 @@ function ActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
             type="text"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            className="w-full rounded p-2 border focus:outline-none focus:ring focus:border-blue-300"
+            className="w-full text-2xl rounded p-2 border focus:outline-orange-200"
           />
         ) : (
-          <span>{emoji}</span>
+          <div className="text-2xl text-center">{emoji}</div>
         )}
       </td>
-      {/* <td className="px-4 py-2 hidden md:table-cell">{createdAt}</td> */}
       <td className="px-4 py-2">
         {isEditing ? (
           <div className="flex space-x-2">
             <button
               onClick={handleSaveEdit}
-              className="bg-green-500 text-white py-2 px-4 rounded-full"
+              className="bg-lime-500/10 font-[rubik] text-lime-600 font-medium py-2 px-4 rounded-md"
             >
               Save
             </button>
             <button
               onClick={handleCancelEdit}
-              className="bg-gray-500 text-white py-2 px-4 rounded-full"
+              className="bg-slate-500/10 font-[rubik] text-slate-500 font-medium py-2 px-4 rounded-md"
             >
               Cancel
             </button>
           </div>
         ) : (
-          <button
-            onClick={handleEdit}
-            className="bg-blue-500 text-white py-2 px-4 rounded-full"
-          >
-            Edit
-          </button>
+          <div className="text-center">
+            <button
+              onClick={handleEdit}
+              className="bg-yellow-500/10 font-[rubik] text-yellow-600 font-medium py-1 px-3 rounded-md"
+            >
+              Edit
+            </button>
+          </div>
         )}
       </td>
       <td className="px-4 py-2">
-        <button
-          onClick={() => handleDelete(_id)}
-          className="bg-red-500 text-white py-2 px-4 rounded-full"
-        >
-          Delete
-        </button>
+        <div className="text-center">
+          <button
+            onClick={() => handleDelete(_id)}
+            className="bg-red-300/10 font-[rubik] text-red-800 font-medium py-1 px-3 rounded-md"
+          >
+            Delete
+          </button>
+        </div>
       </td>
     </tr>
   );
 }
 
-export default ActivityCard;
+export default AdminActivityCard;
