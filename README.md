@@ -21,6 +21,8 @@ Dedicated fitness enthusiasts can track progress, take on challenges, and connec
 
 ### . Admin Page 🔒
 For authorized personnel, the Admin Page provides administrative tools to oversee user accounts, challenges, and other vital components of our fitness journey.
+![admin](https://github.com/audacity07/posh-division-4370/assets/130354961/a145e7ca-c04a-44e2-a5f9-24d98ea8cf49)
+![admin1](https://github.com/audacity07/posh-division-4370/assets/130354961/7a839d05-37f9-4092-b285-65f8307f83ec)
 
 ## 🚀 Tech Stacks
 
