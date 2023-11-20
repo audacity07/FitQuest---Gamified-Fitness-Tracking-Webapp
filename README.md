@@ -29,7 +29,7 @@ Reserved for a select few, the Admin Page empowers authorized personnel with adm
 
 ## 🚀 Tech Stacks
 
-The foundation of CLOTHLY is meticulously constructed with:
+The foundation of FITQUEST is meticulously constructed with:
 
 - **HTML**: The cornerstone, providing the structure for our digital creation.
 - **CSS**: The artist's brush, adding finesse and elegance to the user interface.
