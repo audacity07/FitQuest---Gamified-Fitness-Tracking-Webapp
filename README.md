@@ -48,7 +48,7 @@ Our robust Backend Server furnishes the application with essential data and func
 
 The masterpiece, FITQUEST, now shines brightly on the digital horizon, powered by Vercel. Embark on your fitness journey by following this guiding star:
 
-**Vercel Link: [FitQuest](https://posh-division-4370.vercel.app/)**
+<h1><strong>Vercel Link:</strong> <a href="https://posh-division-4370.vercel.app/">FitQuest</a></h1>
 
 Explore the exciting features, and should you encounter any challenges or wish to share your fitness insights, our "Reviews" page eagerly awaits your participation.
 
