@@ -37,7 +37,7 @@ export default function Navbar({ currentSection }) {
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2  h-[3rem] w-full rounded-none border-white border-opacity-40 bg-white bg-opacity-60 backdrop-blur-[0.5rem] sm:top-6 sm:w-[40rem] sm:rounded-full"
+        className="fixed top-0 left-1/2  sm:h-[3rem] h-[5rem] w-[97%] rounded-full border-white border-opacity-40 bg-white bg-opacity-60 backdrop-blur-[0.5rem] sm:top-6 sm:w-[40rem] sm:rounded-full"
         initial={{ y: 0, x: "-50%", opacity: 1 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
       ></motion.div>
