@@ -139,7 +139,7 @@ export const AvatarSelect = () => {
               </motion.div>
             }
           </AnimatePresence>
-          <div className={`w-full px-2 ${toggleMenu ? "md:w-[480px] mr-5" : "md:w-[380px] -mr-5"} mr-1  ${selectedActivities.length < 2 && "h-[80vh]"} flex flex-col gap-5 justify-center items-center`}>
+          <div className={`w-full px-4 sm:px-3 md:px-0 ${toggleMenu ? "md:w-[480px]" : "md:w-[380px]"}  ${selectedActivities.length < 2 && "h-[80vh]"} flex flex-col gap-5 justify-center items-center`}>
             <div className='w-full flex flex-col justify-between items-center'>
               <div className='w-full flex justify-between items-center'>
                 <div>

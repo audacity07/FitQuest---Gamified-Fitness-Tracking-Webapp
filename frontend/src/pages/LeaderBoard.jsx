@@ -7,6 +7,7 @@ import AdminUserCard from '../components/Admin/AdminUserCard';
 import { getFriend, postFriend } from '../Redux/Friend/action';
 export const LeaderBoard = () => {
     const dispatch = useDispatch();
+    const userData = useSelector((store) => store.authReducer.userData);
     const AllUsers = useSelector((store) => store.userReducer.allUsers);
     const allSelectedActivity = useSelector(
         (store) => store.selectedactivityReducer.allSelectedActivity
@@ -24,7 +25,6 @@ export const LeaderBoard = () => {
             .filter((item) => item.activity.name.toLowerCase() === newSport)
             .sort((a, b) => b.currentXP - a.currentXP);
         setSortedvalue(value);
-        console.log(value);
     };
 
     useEffect(() => {
@@ -63,24 +63,44 @@ export const LeaderBoard = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {sport==="" &&
+                                            {sport === "" &&
                                                 AllUsers.map((item, i) => (
                                                     <tr>
                                                         <td className="text-gray-500 font-sans1 font-semibold">
                                                             {i + 1}
                                                         </td>
                                                         <td className="text-gray-500 text-center font-sans1 font-semibold">
-                                                            {AllUsers.length > 0 && item?.username[0].toUpperCase() + item.username.slice(1)}
+                                                            {AllUsers.length > 0 && 
+                                                                item !== null &&
+                                                                item?.username[0].toUpperCase() +
+                                                                item.username.slice(1) +
+                                                                " " + 
+                                                                (i === 0
+                                                                    ? "🥇"
+                                                                    : i === 1
+                                                                        ? "🥈" 
+                                                                        : i === 2
+                                                                            ? "🥉"
+                                                                            : "")
+                                                            }
                                                         </td>
                                                         <td className="text-gray-500 text-center font-sans1 font-semibold">
-                                                            {item.totalXP}
+                                                            {item.totalXP +
+                                                                " " +
+                                                                (i === 0
+                                                                    ? "🔥"
+                                                                    : i === 1
+                                                                        ? "🔥"
+                                                                        : i === 2
+                                                                            ? "🔥"
+                                                                            : "")}
                                                         </td>
                                                         <td className='py-2'>
                                                             <button
                                                                 onClick={(e) => handleFollow(item._id)}
-                                                                className="bg-yellow-500/10 font-semibold hover:bg-yellow-500/20 text-yellow-600 py-2 px-4 rounded-2xl"
+                                                                className={` font-semibold py-2 ${userData._id === item._id ? "bg-black/30 text-white cursor-not-allowed font-sans1" : "bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20"} px-4 rounded-2xl`}
                                                             >
-                                                                Follow
+                                                                {userData._id === item._id ? "You" : "Follow"}
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -88,22 +108,39 @@ export const LeaderBoard = () => {
                                             {sport &&
                                                 sortedvalue.length > 0 &&
                                                 sortedvalue?.map((item, i) => (
-                                                    <tr>
+                                                    <tr> 
                                                         <td className="text-gray-500 font-sans1 font-semibold">
                                                             {i + 1}
                                                         </td>
                                                         <td className="text-gray-500 text-center font-sans1 font-semibold">
-                                                            {item.user.username[0].toUpperCase() + item.user.username.slice(1)}
+                                                            {item.user !== null && item.user.username[0].toUpperCase() +
+                                                                item.user.username.slice(1) +
+                                                                " " +
+                                                                (i === 0
+                                                                    ? "🥇"
+                                                                    : i === 1
+                                                                        ? "🥈"
+                                                                        : i === 2
+                                                                            ? "🥉"
+                                                                            : "")}
                                                         </td>
                                                         <td className="text-gray-500 text-center font-sans1 font-semibold">
-                                                            {item.user.totalXP}
+                                                            {item.user.totalXP +
+                                                                " " +
+                                                                (i === 0
+                                                                    ? "🔥"
+                                                                    : i === 1
+                                                                        ? "🔥"
+                                                                        : i === 2
+                                                                            ? "🔥"
+                                                                            : "")}
                                                         </td>
                                                         <td className='py-2'>
                                                             <button
                                                                 onClick={(e) => handleFollow(item.user._id)}
-                                                                className="font-sans1 font-semibold bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-600  py-2 px-3 rounded-2xl"
+                                                                className={` font-semibold py-2 ${userData._id === item._id ? "bg-black/30 text-white cursor-not-allowed font-sans1" : "bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20"} px-4 rounded-2xl`}
                                                             >
-                                                                Follow
+                                                                {userData._id === item._id ? "You" : "Follow"}
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -111,16 +148,6 @@ export const LeaderBoard = () => {
                                         </tbody>
                                     </table>
                                 </div>
-                                {/* {
-                                    sport &&
-                                    sortedvalue?.map((user, i) => (
-                                        <div key={user._id} className={`w-full flex justify-between items-center my-4 shadow-[0px_2px_8px_0px_rgba(99,99,99,0.2)] bg-white py-1 rounded-2xl px-6`}>
-                                            <p className='py-3 font-medium '>{i + 1}.</p>
-                                            <p className='font-medium '>{user?.username[0].toUpperCase() + user.username.slice(1)}</p>
-                                            <p className='font-medium '>{user.totalXP}</p>
-                                        </div>
-                                    ))
-                                } */}
                             </div>
                         </div>
                     </div>

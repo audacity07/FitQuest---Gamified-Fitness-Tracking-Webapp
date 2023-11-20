@@ -32,10 +32,10 @@ function Admin() {
     <div>
       <div className="flex gap-14">
         <div className="w-[22%] h-screen bg-white pt-10 pl-10 shadow-[0px_8px_24px_rgba(149,157,165,0.2)]">
-          <p className="font-[rubic] font-semibold text-xl text-slate-600">FitQuest</p>
+          <p className="font-[rubik] font-semibold text-xl text-slate-600">FitQuest</p>
           <div className="flex items-center w-[90%] mt-10 gap-5 bg-[#EEEFF1] rounded-xl pl-2 py-3">
             <p className="text-4xl bg-[#d4beb569] rounded-full py-2 px-1">🏋🏼‍♂️</p>
-            <p className="text-[1rem] font-semibold font-[rubic]">Hello,Admin</p>
+            <p className="text-[1rem] font-semibold font-[rubik]">Hello,Admin</p>
           </div>
 
           <div className="bg-[#EEEFF1] w-[90%] pl-5 py-2 mt-7 rounded-lg">
