@@ -1,63 +1,54 @@
-# Welcome to FitQuest
+# FitQuest
 
-**FitQuest** FitQuest is your ultimate fitness destination where you can engage in exciting fitness activities, tackle daily and weekly challenges to level up your fitness game, and compete on leaderboards to see how you stack up against others. Getting started is a breeze - simply log in to your existing account or sign up for an exhilarating journey towards better health and wellness..
+**FitQuest** is your go-to platform for a transformative fitness experience. Engage in exhilarating fitness activities, conquer daily and weekly challenges, and climb the leaderboards to measure your progress against others. Whether you're a seasoned fitness enthusiast or just starting your wellness journey, FitQuest is here to support and inspire you.
 
 ## 🌟 Frontend Pages
 
 ### . Home Page 🏡
-The Home Page, our digital canvas, presents an invigorating tapestry of fitness. Here, you'll explore an engaging overview of the latest trends, workout styles, and what makes fitness a timeless pursuit of well-being.
+Embark on your fitness journey with the Home Page, where you'll discover the latest trends, workout styles, and the timeless pursuit of well-being in a visually engaging format.
 
-
-![Screenshot (1361)](https://github.com/audacity07/posh-division-4370/assets/130354961/37cae2d2-ba2d-49ac-b3fc-1dac772c29d4)
-
+![Home Page](https://github.com/audacity07/posh-division-4370/assets/130354961/37cae2d2-ba2d-49ac-b3fc-1dac772c29d4)
 
 ### . Activity Page 🌐
-Prepare to be captivated by our meticulously curated activity selection on the Activity Page, where you can explore a variety of fitness routines and challenges tailored for each day. Immerse yourself in these detailed programs to help you progress through each level of your wellness journey.
-![activity1](https://github.com/audacity07/posh-division-4370/assets/130354961/dd622012-0013-4140-83c2-42180fcd3aa6)
+Immerse yourself in a variety of meticulously curated fitness routines and challenges on the Activity Page. Tailored for each day, these programs guide you through different levels of your wellness journey.
 
-![home1](https://github.com/audacity07/posh-division-4370/assets/130354961/fa9efc19-566c-4fde-91dc-44f7e7fcd3cd)
+![Activity Page](https://github.com/audacity07/posh-division-4370/assets/130354961/dd622012-0013-4140-83c2-42180fcd3aa6)
 
 ### . Login Page 🔐
-For our dedicated fitness enthusiasts, the Login Page is your gateway to an exclusive fitness experience, where you can track your progress, take on exciting challenges, and engage in a community of like-minded individuals. Unlock your wellness journey with us today!
-![login](https://github.com/audacity07/posh-division-4370/assets/130354961/27cbbb9b-416b-447d-90f2-a71c92bb36ca)
+Dedicated fitness enthusiasts can track progress, take on challenges, and connect with like-minded individuals through the exclusive Login Page. Unlock your wellness journey today!
 
+![Login Page](https://github.com/audacity07/posh-division-4370/assets/130354961/27cbbb9b-416b-447d-90f2-a71c92bb36ca)
 
 ### . Admin Page 🔒
-Reserved for a select few, the Admin Page empowers authorized personnel with administrative tools to oversee user accounts, challenges, and other vital components of our fitness journey.
-
-
+For authorized personnel, the Admin Page provides administrative tools to oversee user accounts, challenges, and other vital components of our fitness journey.
 
 ## 🚀 Tech Stacks
 
-The foundation of FITQUEST is meticulously constructed with:
+FitQuest is built on a solid foundation:
 
-- **HTML**: The cornerstone, providing the structure for our digital creation.
-- **CSS**: The artist's brush, adding finesse and elegance to the user interface.
-- **JavaScript**: The conductor, orchestrating interactivity and dynamic functionality.
-- **React**: The powerhouse that drives our seamless user experience.
+- **HTML**: Providing the structure for our digital creation.
+- **CSS**: Adding finesse and elegance to the user interface.
+- **JavaScript**: Orchestrating interactivity and dynamic functionality.
+- **React**: Driving our seamless user experience.
 - **Redux**: Enhancing state management for a smoother journey.
-- **Styled Components**: Elevating the aesthetics of our application.
-- **tailwind CSS**: Adding a touch of modernity to our design.
-- **React-icons**: Enriching our interface with stylish icons.
-- **Axios**: Enabling seamless communication with our Backend Server.
-- **Mongodb**:Storing and managing data for our fitness platform.
-- **Express**:Building the server-side framework for our fitness application.
-- **Node.js**:Powering the server and runtime environment for FitQuest.
-- 
+- **Styled Components**: Adding a touch of modernity to our design.
 
 ## 🌐 Backend Server
 
 Our robust Backend Server furnishes the application with essential data and functionality, presenting a tapestry of endpoints:
 
 - **Server Link**: [https://helpful-jay-neckerchief.cyclic.app/](https://helpful-jay-neckerchief.cyclic.app/)
+- **Swagger Docs**: [https://helpful-jay-neckerchief.cyclic.app/api-docs/](https://helpful-jay-neckerchief.cyclic.app/api-docs/)
 - **Endpoints**:
   1. `/users`: Seamlessly manage user data, including registration and authentication.
-  2. `/activity: Immerse yourself in our fitness offerings, exploring comprehensive information about each engaging workout routine and challenge.
-  3. `/challenge: Accept various fitness challenges and engage with user feedback and reviews, fostering a dynamic interaction within our fitness community through this endpoint.
+  2. `/activity`: Immerse yourself in our fitness offerings, exploring comprehensive information about each engaging workout routine and challenge.
+  3. `/challenge`: Accept various fitness challenges and engage with user feedback and reviews, fostering a dynamic interaction within our fitness community through this endpoint.
+
 ## 🌐 Deployment
 
 The masterpiece, FITQUEST, now shines brightly on the digital horizon, powered by Vercel. Embark on your fitness journey by following this guiding star:
-<h1><strong>Vercel Link:</strong> <a href="https://posh-division-4370.vercel.app/">FitQuest</a></h1>
+
+**Vercel Link: [FitQuest](https://posh-division-4370.vercel.app/)**
 
 Explore the exciting features, and should you encounter any challenges or wish to share your fitness insights, our "Reviews" page eagerly awaits your participation.
 
