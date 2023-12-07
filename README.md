@@ -1,4 +1,4 @@
-# FitQuest
+# FitQuest - Gamified Fitness Tracking Webapp
 
 **FitQuest** is your go-to platform for a transformative fitness experience. Engage in exhilarating fitness activities, conquer daily and weekly challenges, and climb the leaderboards to measure your progress against others. Whether you're a seasoned fitness enthusiast or just starting your wellness journey, FitQuest is here to support and inspire you.
 
