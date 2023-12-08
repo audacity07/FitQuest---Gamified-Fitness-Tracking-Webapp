@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 
 function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -8,17 +8,20 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/delete/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 200) {
         // Successful deletion, notify the parent component to update the user list
         onDeleteUser(id);
-        toast.success("User Deleted!")
+        toast.success("User Deleted!");
       } else {
         toast.error("Failed to delete user");
       }
@@ -41,13 +44,16 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
 
   const handleSaveEdit = async () => {
     try {
-      const response = await fetch(`https://helpful-jay-neckerchief.cyclic.app/user/update/${_id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username: newUsername, email: newEmail }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/user/update/${_id}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ username: newUsername, email: newEmail }),
+        }
+      );
 
       if (response.status === 200) {
         // Successful update, update the state with the new information
@@ -75,7 +81,9 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
             className="w-full font-[rubik] rounded p-2  font-medium border focus:outline-orange-200"
           />
         ) : (
-          <span className="text-gray-500 font-[rubik] font-medium">{username}</span>
+          <span className="text-gray-500 font-[rubik] font-medium">
+            {username}
+          </span>
         )}
       </td>
       <td className="px-4 py-2">
@@ -87,10 +95,14 @@ function AdminUserCard({ _id, email, username, createdAt, onDeleteUser }) {
             className="w-full font-[rubik] text-black font-medium rounded p-2 border focus:outline-orange-200"
           />
         ) : (
-          <span className="text-gray-500 font-[rubik] font-medium">{email}</span>
+          <span className="text-gray-500 font-[rubik] font-medium">
+            {email}
+          </span>
         )}
       </td>
-      <td className="px-4 py-2 hidden md:table-cell text-gray-500 font-medium font-[rubik]">{createdAt}</td>
+      <td className="px-4 py-2 hidden md:table-cell text-gray-500 font-medium font-[rubik]">
+        {createdAt}
+      </td>
       <td className="px-4 py-2">
         {isEditing ? (
           <div className="flex space-x-2">

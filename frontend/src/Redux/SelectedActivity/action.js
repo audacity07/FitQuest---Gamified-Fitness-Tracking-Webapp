@@ -9,7 +9,7 @@ import {
   UPDATE_SELECTED_ACTIVITY,
 } from "./actionType";
 
-const URL = `https://helpful-jay-neckerchief.cyclic.app/selectedactivity`;
+const URL = `${process.env.REACT_APP_API_URL}/selectedactivity`;
 
 export const postSelectedActivity = (paramsObj) => (dispatch) => {
   dispatch({ type: SELECTED_ACTIVITY_REQUEST });

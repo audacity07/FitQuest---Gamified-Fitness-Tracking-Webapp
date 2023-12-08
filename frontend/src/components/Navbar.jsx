@@ -6,28 +6,28 @@ import { useDispatch } from "react-redux";
 import { logout } from "../Redux/Authenticate/action";
 
 const links = [
-    {
-        name: "Activity",
-        link: "/user-activity",
-    },
-    {
-        name: "Challenge",
-        link: "/challenge",
-    },
-    {
-        name: "Notification",
-        link: "/notification",
-    },
-    {
-        name: "Leaderboard",
-        link: "/leaderboard",
-    },
+  {
+    name: "Activity",
+    link: "/user-activity",
+  },
+  {
+    name: "Challenge",
+    link: "/challenge",
+  },
+  {
+    name: "Notification",
+    link: "/notification",
+  },
+  {
+    name: "Leaderboard",
+    link: "/leaderboard",
+  },
 ];
 
 export default function Navbar({ currentSection }) {
-    const [activeSection, setActiveSection] = useState(currentSection);
-    const dispatch = useDispatch()
-    const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState(currentSection);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logout());

@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 
-function AdminAddActivity({setToggleAddActivity}) {
+function AdminAddActivity({ setToggleAddActivity }) {
   const [name, setName] = useState("");
   const [emoji, setEmoji] = useState("");
 
   const AddActivityFun = async () => {
-    let res = await fetch("https://helpful-jay-neckerchief.cyclic.app/activity/add", {
+    let res = await fetch(`${process.env.REACT_APP_API_URL}/activity/add`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,8 +26,15 @@ function AdminAddActivity({setToggleAddActivity}) {
   return (
     <div>
       <div className="relative bg-[#F7F7F7] shadow-[0px_8px_24px_rgba(149,157,165,0.2)] rounded px-8 py-6 mb-4 w-[600px]">
-        <h1 className="text-2xl text-slate-500 font-[rubik] text-center mb-4 font-bold">Add Activity</h1>
-        <div className="absolute top-3 right-4 cursor-pointer text-xl" onClick={() => setToggleAddActivity(prev => !prev)}><RxCross2 /></div>
+        <h1 className="text-2xl text-slate-500 font-[rubik] text-center mb-4 font-bold">
+          Add Activity
+        </h1>
+        <div
+          className="absolute top-3 right-4 cursor-pointer text-xl"
+          onClick={() => setToggleAddActivity((prev) => !prev)}
+        >
+          <RxCross2 />
+        </div>
         <form onSubmit={handleAdd}>
           <div className="mb-4">
             <input

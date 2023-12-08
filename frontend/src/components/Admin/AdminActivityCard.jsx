@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 
 function AdminActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -9,7 +9,7 @@ function AdminActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const handleDelete = async (id) => {
     try {
       const response = await fetch(
-        `https://helpful-jay-neckerchief.cyclic.app/activity/delete/${_id}`,
+        `${process.env.REACT_APP_API_URL}/activity/delete/${_id}`,
         {
           method: "DELETE",
           headers: {
@@ -21,7 +21,7 @@ function AdminActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
       if (response.status === 200) {
         // Successful deletion, notify the parent component to update the user list
         onDeleteUser(id);
-        toast.success("Activity Deleted !")
+        toast.success("Activity Deleted !");
       } else {
         toast.error("Failed to delete activity");
       }
@@ -45,7 +45,7 @@ function AdminActivityCard({ _id, emoji, name, createdAt, onDeleteUser }) {
   const handleSaveEdit = async () => {
     try {
       const response = await fetch(
-        `https://helpful-jay-neckerchief.cyclic.app/activity/update/${_id}`,
+        `${process.env.REACT_APP_API_URL}/activity/update/${_id}`,
         {
           method: "PATCH",
           headers: {

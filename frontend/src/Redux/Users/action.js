@@ -7,7 +7,7 @@ import {
   PATCH_USER,
 } from "./actionType";
 
-const URL = `https://helpful-jay-neckerchief.cyclic.app/`;
+const URL = process.env.REACT_APP_API_URL;
 
 export const getUser = () => (dispatch) => {
   dispatch({ type: USER_REQUEST });

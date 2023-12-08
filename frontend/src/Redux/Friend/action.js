@@ -7,7 +7,7 @@ import {
   PATCH_FRIEND,
 } from "./actionTypes";
 
-const URL = `https://helpful-jay-neckerchief.cyclic.app/friend`;
+const URL = `${process.env.REACT_APP_API_URL}/friend`;
 
 export function postFriend(paramsObj) {
   return async function (dispatch) {

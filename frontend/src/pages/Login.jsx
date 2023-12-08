@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { login } from "../Redux/Authenticate/action";
 import { BiArrowBack } from "react-icons/bi";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 const emoji = [
   "🏋️",
   "🏈",
@@ -47,7 +47,7 @@ export const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isAuth, isError, isLoading, token } = useSelector((store) => {
+  const { isLoading, token } = useSelector((store) => {
     return {
       isAuth: store.authReducer.isAuth,
       isError: store.authReducer.isError,
@@ -62,11 +62,11 @@ export const Login = () => {
       password,
     };
 
-    if (email == "admin@gmail.com" && password == "admin") {
-      navigate("/admin")
+    if (email === "admin@gmail.com" && password === "admin") {
+      navigate("/admin");
     }
-    dispatch(login(userData))
-    toast.success("Login successfull ! 🎉")
+    dispatch(login(userData));
+    toast.success("Login successfull ! 🎉");
   };
 
   useEffect(() => {
@@ -84,9 +84,7 @@ export const Login = () => {
   }
 
   return (
-    <div
-      className="flex justify-center items-center p-10"
-    >
+    <div className="flex justify-center items-center p-10">
       <Toaster richColors position="top-right" />
       <div className="w-full">
         <div className="text-center">
@@ -95,8 +93,15 @@ export const Login = () => {
           </span>
         </div>
         <div className="relative mt-10 w-full md:w-[650px]  m-auto">
-          <Link to={"/"} className="absolute -top-28 -left-5 sm:left-0 text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"><BiArrowBack /></Link>
-          <h2 className="text-center font-[rubik] mb-10 text-4xl font-extrabold text-slate-700">{token ? "LOGIN SUCCESS" : "Welcome back!"}</h2>
+          <Link
+            to={"/"}
+            className="absolute -top-28 -left-5 sm:left-0 text-2xl text-slate-700 cursor-pointer hover:-translate-x-1 transition"
+          >
+            <BiArrowBack />
+          </Link>
+          <h2 className="text-center font-[rubik] mb-10 text-4xl font-extrabold text-slate-700">
+            {token ? "LOGIN SUCCESS" : "Welcome back!"}
+          </h2>
           <div className="flex flex-col gap-10">
             <input
               className="w-full px-2 py-3 rounded-lg outline-orange-200"

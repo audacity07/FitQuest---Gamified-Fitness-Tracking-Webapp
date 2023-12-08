@@ -12,7 +12,7 @@ function Admin() {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch("https://helpful-jay-neckerchief.cyclic.app/user");
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/user`);
       const data = await response.json();
       setUsers(data.data.users);
     } catch (error) {

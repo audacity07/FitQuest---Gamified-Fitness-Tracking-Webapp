@@ -4,7 +4,7 @@ import { getNotification } from "../Redux/Notification/action";
 import { getFriend, patchFriend } from "../Redux/Friend/action";
 import { updateChallengeArray } from "../Redux/Challenge/action";
 import Header from "../components/Navbar";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from "sonner";
 
 export function Notification() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export function Notification() {
       challengeId,
     };
     dispatch(updateChallengeArray(obj)).then(() => dispatch(getNotification()));
-    toast.success("Challenge Accepted ! 🎉")
+    toast.success("Challenge Accepted ! 🎉");
   }
   return (
     <>
@@ -50,24 +50,32 @@ export function Notification() {
                       : "#Challenge Invite"}
                   </h2>
                   <h3 className="text-lg mt-3 text-[#3D3D3D] line-clamp-2">
-                    <em className="font-mono text-xl font-medium">{item.content[0].toUpperCase() + item.content.slice(1)}</em> 
+                    <em className="font-mono text-xl font-medium">
+                      {item.content[0].toUpperCase() + item.content.slice(1)}
+                    </em>
                   </h3>
                 </div>
                 <div>
                   {item.category === "friend_request" ? (
-                    <button className={`bg-orange-600/90 shadow-[0px_13px_27px_-5px_rgba(50,50,93,0.25),0px_8px_16px_-8px_rgba(0,0,0,0.3)] font-medium text-white ${item.read && "bg-black/30 cursor-not-allowed font-sans1"} py-2 px-4 rounded-2xl`} onClick={() => handleFollowBack(item._id)}>
+                    <button
+                      className={`bg-orange-600/90 shadow-[0px_13px_27px_-5px_rgba(50,50,93,0.25),0px_8px_16px_-8px_rgba(0,0,0,0.3)] font-medium text-white ${
+                        item.read && "bg-black/30 cursor-not-allowed font-sans1"
+                      } py-2 px-4 rounded-2xl`}
+                      onClick={() => handleFollowBack(item._id)}
+                    >
                       Follow Back
                     </button>
                   ) : (
                     <button
                       disabled={item.read}
-                      className={`bg-orange-600/90 shadow-[0px_13px_27px_-5px_rgba(50,50,93,0.25),0px_8px_16px_-8px_rgba(0,0,0,0.3)] font-medium text-white ${item.read && "bg-black/30 cursor-not-allowed font-sans1"} py-2 px-4 rounded-2xl`}
+                      className={`bg-orange-600/90 shadow-[0px_13px_27px_-5px_rgba(50,50,93,0.25),0px_8px_16px_-8px_rgba(0,0,0,0.3)] font-medium text-white ${
+                        item.read && "bg-black/30 cursor-not-allowed font-sans1"
+                      } py-2 px-4 rounded-2xl`}
                       onClick={() =>
                         handleAcceptChallenge(item._id, item.challengeId)
                       }
                     >
                       {item.read ? "Accepted" : "Accept"}
-
                     </button>
                   )}
                 </div>

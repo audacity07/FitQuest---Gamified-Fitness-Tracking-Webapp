@@ -7,7 +7,7 @@ import {
   UPDATE_NOTIFICATION,
 } from "./actionTypes";
 
-const URL = `https://helpful-jay-neckerchief.cyclic.app/notification`;
+const URL = `${process.env.REACT_APP_API_URL}/notification`;
 
 export function getNotification() {
   return async function (dispatch) {

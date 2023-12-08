@@ -7,7 +7,7 @@ import {
   PATCH_CHALLENGE,
 } from "./actionTypes";
 
-const URL = `https://helpful-jay-neckerchief.cyclic.app/`;
+const URL = `${process.env.REACT_APP_API_URL}`;
 
 export function postChallenge(paramsObj) {
   return async function (dispatch) {
@@ -49,7 +49,7 @@ export function updateChallenge(id, paramsObj) {
     dispatch({ type: CHALLENGE_REQUEST });
     const token = localStorage.getItem("token");
     try {
-      let res = await axios.patch(`${URL}/challenge/${id}`, paramsObj, {
+      await axios.patch(`${URL}/challenge/${id}`, paramsObj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -84,7 +84,7 @@ export function deleteChallenge(id) {
     dispatch({ type: CHALLENGE_REQUEST });
     const token = localStorage.getItem("token");
     try {
-      let res = await axios.delete(`${URL}/challenge/${id}`, {
+      await axios.delete(`${URL}/challenge/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
