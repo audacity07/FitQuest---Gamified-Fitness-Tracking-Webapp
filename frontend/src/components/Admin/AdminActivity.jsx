@@ -19,7 +19,7 @@ function AdminActivity() {
         },
       });
       res = await res.json();
-      console.log(res.data.activities);
+      // console.log(res.data.activities);
       setData(res.data.activities);
     } catch (error) {
       console.log(error);
@@ -33,7 +33,7 @@ function AdminActivity() {
 
   useEffect(() => {
     getImojiFun();
-  }, [data]);
+  }, []);
 
   return (
     <>

@@ -26,16 +26,20 @@ function Admin() {
 
   useEffect(() => {
     fetchUsers();
-  }, [users]);
+  }, []);
 
   return (
     <div>
       <div className="flex gap-14">
         <div className="w-[22%] h-screen bg-white pt-10 pl-10 shadow-[0px_8px_24px_rgba(149,157,165,0.2)]">
-          <p className="font-[rubik] font-semibold text-xl text-slate-600">FitQuest</p>
+          <p className="font-[rubik] font-semibold text-xl text-slate-600">
+            FitQuest
+          </p>
           <div className="flex items-center w-[90%] mt-10 gap-5 bg-[#EEEFF1] rounded-xl pl-2 py-3">
             <p className="text-4xl bg-[#d4beb569] rounded-full py-2 px-1">🏋🏼‍♂️</p>
-            <p className="text-[1rem] font-semibold font-[rubik]">Hello,Admin</p>
+            <p className="text-[1rem] font-semibold font-[rubik]">
+              Hello,Admin
+            </p>
           </div>
 
           <div className="bg-[#EEEFF1] w-[90%] pl-5 py-2 mt-7 rounded-lg">
@@ -64,14 +68,13 @@ function Admin() {
           </div>
         </div>
         <div className="w-[70%] mt-10">
-          {
-            toggleAddActivity &&
+          {toggleAddActivity && (
             <div className="absolute top-0 left-0 bg-black/10 backdrop-blur-sm min-w-full min-h-screen ">
               <div className="fixed top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
                 <AdminAddActivity setToggleAddActivity={setToggleAddActivity} />
               </div>
             </div>
-          }
+          )}
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-[rubik] font-semibold mb-4 mt-4">
               Total Users: {users.length}
@@ -79,7 +82,7 @@ function Admin() {
             <div>
               <div
                 className="mx-2 cursor-pointer font-[rubik] bg-orange-600/90 hover:bg-orange-600 text-white font-medium rounded-md py-2 px-3"
-                onClick={() => setToggleAddActivity(prev => !prev)}
+                onClick={() => setToggleAddActivity((prev) => !prev)}
               >
                 Add Activity
               </div>
@@ -90,11 +93,21 @@ function Admin() {
             <table className="min-w-full text-center">
               <thead className="">
                 <tr>
-                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">UserName</th>
-                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">Email</th>
-                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">CreatedAt</th>
-                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">Update</th>
-                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md">Delete</th>
+                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">
+                    UserName
+                  </th>
+                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">
+                    Email
+                  </th>
+                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">
+                    CreatedAt
+                  </th>
+                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md border-r-4 border-white">
+                    Update
+                  </th>
+                  <th className="font-[rubik] px-4 py-3 text-zinc-600 bg-[#faf5f4] rounded-md">
+                    Delete
+                  </th>
                 </tr>
               </thead>
               <tbody>
