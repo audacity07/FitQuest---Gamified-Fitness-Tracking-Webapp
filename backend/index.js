@@ -39,10 +39,7 @@ const options = {
         url: "http://localhost:8080",
       },
       {
-        url: "https://posh-division-4370.vercel.app/",
-      },
-      {
-        url: "https://helpful-jay-neckerchief.cyclic.app/",
+        url: "https://fitquest-d60w.onrender.com/",
       },
     ],
   },
